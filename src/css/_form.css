@@ -1,0 +1,41 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: min(50rem, 90%);
+  margin: auto;
+  gap: 1rem;
+}
+
+.form-group > input {
+  background-color: var(--card);
+  border: none;
+  height: 2.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--border);
+}
+
+.form-group > input:focus {
+  background-color: var(--card);
+  outline: none;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group > input:is(:-webkit-autofill, :autofill) {
+  background-color: var(--card);
+}
+
+.form-group > input:-webkit-autofill {
+  background-color: var(--card) !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--card) inset;
+  box-shadow: 0 0 0 1000px var(--card) inset;
+  -webkit-text-fill-color: var(--foreground) !important;
+  color: var(--foreground) !important;
+
+  /* Ta bort gräns och outline */
+  outline: none !important;
+}
