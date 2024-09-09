@@ -60,5 +60,11 @@ export default class NoroffAPI {
         console.error(error);
       }
     },
+
+    logout: () => {
+      storage.remove("token"), storage.remove("user");
+      alert("signed out!"); // change this later
+      window.location.href = "/";
+    },
   };
 }
