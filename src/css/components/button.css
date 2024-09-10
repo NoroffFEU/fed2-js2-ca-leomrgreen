@@ -13,7 +13,7 @@
 
 .outline {
   background-color: var(--background);
-  border: 0.5px solid var(--muted-foreground);
+  border: 1px solid var(--border);
   outline: none;
   border-radius: 0.25rem;
   color: var(--foreground);
