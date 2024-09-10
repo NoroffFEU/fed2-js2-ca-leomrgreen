@@ -16,9 +16,10 @@ main {
   gap: 0;
   flex-direction: column;
   background-color: var(--card);
-  border: 1px solid var(--muted-foreground);
+  border: 0.5px solid var(--muted-foreground);
   border-radius: 0.25rem;
   padding: 1rem;
+  box-shadow: 0px 2px 10px rgba(157, 157, 157, 0.435);
 }
 
 h5 {
@@ -49,7 +50,13 @@ h5 {
   top: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 53rem) {
+  #posts-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 37rem) {
   #posts-container {
     grid-template-columns: 1fr;
   }

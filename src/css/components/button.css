@@ -6,11 +6,14 @@
   max-width: 100%;
   height: 2.5rem;
   transition: 200ms ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .outline {
   background-color: var(--background);
-  border: 1px solid var(--muted-foreground);
+  border: 0.5px solid var(--muted-foreground);
   outline: none;
   border-radius: 0.25rem;
   color: var(--foreground);
