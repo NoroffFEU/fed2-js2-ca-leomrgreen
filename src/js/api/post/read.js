@@ -4,7 +4,34 @@ const api = new socialAPI();
 const prevButton = document.getElementById("prev-page");
 const nextButton = document.getElementById("next-page");
 
-export async function readPost(id) {}
+export async function readPost(id) {
+  try {
+    const res = await api.post.readSinglePost(id);
+    const post = res.data;
+
+    const container = document.getElementById("post-container");
+    container.innerHTML = "";
+
+    const image = document.createElement("img");
+    if (post.media && post.media.url) {
+      image.src = post.media.url;
+      image.alt = post.media.alt || "Image not available";
+    } else {
+      image.src = "/images/noroff-logo.png";
+      image.alt = "Place-holder image";
+    }
+
+    const title = document.createElement("h1");
+    title.textContent = post.title;
+
+    const body = document.createElement("p");
+    body.textContent = post.body;
+
+    container.append(image, title, body);
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 export async function readPosts(page = 1, limit = 12) {
   try {
@@ -36,6 +63,9 @@ export async function readPosts(page = 1, limit = 12) {
         image.src = "/images/noroff-logo.png";
         image.alt = "Place-holder image";
       }
+      card.addEventListener("click", () => {
+        window.location.href = `/post/?id=${post.id}`;
+      });
       card.append(title, image);
       container.append(card);
     });
@@ -63,18 +93,22 @@ function updatePosts() {
 }
 
 // previous page (-1 index)
-prevButton.addEventListener("click", () => {
-  if (currentPage > 1) {
-    currentPage--;
-    updatePosts();
-  }
-});
+if (prevButton) {
+  prevButton.addEventListener("click", () => {
+    if (currentPage > 1) {
+      currentPage--;
+      updatePosts();
+    }
+  });
+}
 
 // next page (+1 index)
-nextButton.addEventListener("click", () => {
-  currentPage++;
-  console.log(currentPage);
-  updatePosts();
-});
+if (nextButton) {
+  nextButton.addEventListener("click", () => {
+    currentPage++;
+    console.log(currentPage);
+    updatePosts();
+  });
+}
 
 export async function readPostsByUser(username, limit = 12, page = 1, tag) {}

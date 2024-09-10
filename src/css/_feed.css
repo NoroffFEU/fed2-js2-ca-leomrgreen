@@ -20,6 +20,7 @@ main {
   border-radius: 0.25rem;
   padding: 1rem;
   box-shadow: 0px 2px 10px rgba(157, 157, 157, 0.435);
+  cursor: pointer;
 }
 
 h5 {
