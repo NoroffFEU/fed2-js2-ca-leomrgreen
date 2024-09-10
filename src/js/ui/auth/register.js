@@ -1,4 +1,4 @@
-import NoroffAPI from "../../api/index";
+import NoroffAPI from "../../api/auth";
 
 const api = new NoroffAPI();
 

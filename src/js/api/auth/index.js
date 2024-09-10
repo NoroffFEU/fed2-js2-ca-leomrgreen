@@ -1,6 +1,6 @@
-import { API_BASE } from "./constants";
-import { headers } from "./headers";
-import * as storage from "../utilities/storage";
+import { API_BASE } from "../constants";
+import { headers } from "../headers";
+import * as storage from "../../utilities/storage";
 
 export default class NoroffAPI {
   apiBase = "";
