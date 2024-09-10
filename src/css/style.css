@@ -3,6 +3,7 @@
 @import url(_form.css);
 @import url(_nav.css);
 @import "./components/button.css";
+@import url(_feed.css);
 
 body {
   background-color: var(--background);
