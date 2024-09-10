@@ -1,26 +1,11 @@
 @import url(_reset.css);
 @import url(_theme.css);
 @import url(_form.css);
+@import url(_nav.css);
+@import "./components/button.css";
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-}
-
-button {
-  background-color: var(--primary);
-  border: none;
-  border-radius: 0.25rem;
-  font-size: 1rem;
-  color: white;
-  cursor: pointer;
-  padding: 0.3rem 0.8rem 0.3rem 0.8rem;
-  width: 10rem;
-  max-width: 100%;
-  height: 2.5rem;
-  transition: 200ms ease;
-}
-
-button:hover {
-  background-color: var(--secondary);
+  min-height: 100vh;
 }

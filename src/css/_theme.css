@@ -52,3 +52,19 @@
   --chart-4: hsl(280 65% 60%);
   --chart-5: hsl(340 75% 55%);
 }
+
+.dark .bi-brightness-high {
+  display: block;
+}
+
+.dark .bi-moon-stars {
+  display: none;
+}
+
+.bi-brightness-high {
+  display: none;
+}
+
+.bi-moon-stars {
+  display: block;
+}

@@ -5,23 +5,19 @@ const api = new NoroffAPI();
 export async function onRegister(e) {
   e.preventDefault();
 
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+  const formData = new FormData(e.target);
 
   const user = {
-    name: name,
-    email: email,
-    password: password,
+    name: formData.get("name"),
+    email: formData.get("email"),
+    password: formData.get("password"),
   };
 
   try {
     const response = await api.auth.register(user);
     console.log("Registration successful:", response);
 
-    document.getElementById("name").value = "";
-    document.getElementById("email").value = "";
-    document.getElementById("password").value = "";
+    e.target.reset();
 
     alert(`Registration successful for ${user.name}`);
     window.location.href = "/auth/login/";

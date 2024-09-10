@@ -1,5 +1,12 @@
-import { setLogoutListener } from "../global/logout";
+import * as storage from "../../utilities/storage";
 
-export function onLogout() {
-  setLogoutListener();
+export default function onLogout() {
+  try {
+    storage.remove("token");
+    storage.remove("user");
+    alert("signed out!");
+    window.location.href = "/auth/";
+  } catch {
+    alert("could not sign out");
+  }
 }

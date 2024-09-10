@@ -19,3 +19,5 @@ export const API_SOCIAL_POSTS = `${API_SOCIAL}/posts`;
 export const API_SOCIAL_PROFILES = `${API_SOCIAL}/profiles`;
 
 export const token = localStorage.accessToken;
+
+export const user = localStorage.user;

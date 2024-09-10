@@ -1,0 +1,28 @@
+.primary {
+  background-color: var(--primary);
+  border: none;
+  border-radius: 0.25rem;
+  color: white;
+  max-width: 100%;
+  height: 2.5rem;
+  transition: 200ms ease;
+}
+
+.outline {
+  background-color: var(--background);
+  border: 1px solid var(--muted-foreground);
+  outline: none;
+  border-radius: 0.25rem;
+  color: var(--foreground);
+  height: 2.5rem;
+}
+
+.primary:hover {
+  background-color: var(--secondary);
+}
+
+button {
+  cursor: pointer;
+  padding: 0.3rem 0.8rem 0.3rem 0.8rem;
+  font-size: 1rem;
+}

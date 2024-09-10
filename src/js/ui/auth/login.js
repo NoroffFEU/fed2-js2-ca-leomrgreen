@@ -4,21 +4,17 @@ const api = new NoroffAPI();
 
 export async function onLogin(e) {
   e.preventDefault();
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+  const formData = new FormData(e.target);
 
   const user = {
-    email: email,
-    password: password,
+    email: formData.get("email"),
+    password: formData.get("password"),
   };
 
   try {
     const response = await api.auth.login(user);
     console.log("Login successful:", response);
-
-    document.getElementById("email").value = "";
-    document.getElementById("password").value = "";
-
+    e.target.reset();
     alert(`Login successful for ${response.data.name}`);
     window.location.href = "/";
   } catch (error) {
