@@ -5,7 +5,7 @@ export default function navMenu() {
   const profileTag = document.getElementById("profile");
 
   if (profileTag) {
-    profileTag.textContent = userName.name;
+    profileTag.textContent = userName.name.toUpperCase();
   } else {
     return null;
   }
