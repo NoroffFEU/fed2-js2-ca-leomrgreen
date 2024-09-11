@@ -1,6 +1,7 @@
 main {
   width: min(70rem, 95%);
   display: grid;
+  gap: 2rem;
   margin-inline: auto;
 }
 
@@ -12,8 +13,8 @@ main {
 
 .post-card {
   display: flex;
-  justify-content: start;
-  gap: 0;
+  justify-content: space-between;
+  gap: 1rem;
   flex-direction: column;
   background-color: var(--card);
   border: 1px solid var(--border);
@@ -27,8 +28,15 @@ h5 {
   font-size: 1.5rem;
 }
 
+.fy {
+  padding: 1rem;
+}
+
 .post-card img {
   max-width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: inherit;
+  object-fit: cover;
 }
 
 #pagination-controls {

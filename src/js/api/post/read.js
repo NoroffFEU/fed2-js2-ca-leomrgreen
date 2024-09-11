@@ -1,4 +1,5 @@
 import timeSince from "../../utilities/getDate";
+import { updatePaginationControls } from "../../utilities/pagination";
 import { nextButton, prevButton } from "../constants";
 import socialAPI from "./index";
 
@@ -17,14 +18,14 @@ export async function readPost(id) {
       image.src = post.media.url;
       image.alt = post.media.alt || "Image not available";
     } else {
-      image.src = "/images/noroff-logo.png";
+      image.src = "/images/placeholder.jpg";
       image.alt = "Place-holder image";
     }
 
     const desc = document.createElement("div");
     desc.className = "description";
 
-    const title = document.createElement("h1");
+    const title = document.createElement("h2");
     title.textContent = post.title;
 
     const body = document.createElement("p");
@@ -69,14 +70,14 @@ export async function readPosts(page = 1, limit = 12) {
     paginatedPosts.forEach((post) => {
       const card = document.createElement("div");
       card.className = "post-card";
-      const title = document.createElement("h5");
+      const title = document.createElement("h3");
       title.textContent = post.title;
       const image = document.createElement("img");
       if (post.media && post.media.url) {
         image.src = post.media.url;
         image.alt = post.media.alt || "Image not available";
       } else {
-        image.src = "/images/noroff-logo.png";
+        image.src = "/images/placeholder.jpg";
         image.alt = "Place-holder image";
       }
       card.addEventListener("click", () => {
@@ -94,12 +95,6 @@ export async function readPosts(page = 1, limit = 12) {
 }
 
 // this functions controls if we want to display each control based on currentPage index and our total of posts.
-function updatePaginationControls(currentPage, totalPosts, limit) {
-  prevButton.style.display = currentPage > 1 ? "flex" : "none";
-
-  const totalPages = Math.ceil(totalPosts / limit);
-  nextButton.style.display = currentPage < totalPages ? "flex" : "none";
-}
 
 // Pagination state
 let currentPage = 1;

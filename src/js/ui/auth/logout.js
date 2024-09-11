@@ -1,5 +1,6 @@
 import * as storage from "../../utilities/storage";
 
+// logs user out by clearing token and user information in local storage, then redirects user
 export default function onLogout() {
   try {
     storage.remove("token");

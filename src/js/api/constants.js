@@ -25,3 +25,5 @@ export const user = localStorage.user;
 export const prevButton = document.getElementById("prev-page");
 
 export const nextButton = document.getElementById("next-page");
+
+export const carouselContainer = document.getElementById("carousel-container");
