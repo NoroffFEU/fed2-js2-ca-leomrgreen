@@ -3,11 +3,16 @@
   margin: auto;
   display: grid;
   padding: 1rem;
-  border-radius: 0.25rem;
+  border-radius: var(--radius);
   box-shadow: 0 2px 10px var(--shadow);
   text-align: start;
   gap: 1rem;
   border: 1px solid var(--border);
+}
+
+h2 {
+  font-weight: 400;
+  color: var(--foreground);
 }
 
 #post-container img {

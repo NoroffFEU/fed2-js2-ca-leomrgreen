@@ -10,7 +10,7 @@ form {
   background-color: var(--card);
   border: none;
   height: 2.5rem;
-  border-radius: 0.25rem;
+  border-radius: var(--radius);
   border: 1px solid var(--border);
   color: var(--foreground);
 }

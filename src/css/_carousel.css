@@ -14,15 +14,15 @@
   -webkit-mask: linear-gradient(
     90deg,
     transparent,
-    white 20%,
-    white 100%,
+    var(--shadow) 2%,
+    var(--shadow) 98%,
     transparent
   );
   mask: linear-gradient(
     90deg,
     transparent,
-    var(--shadow) 5%,
-    var(--shadow) 95%,
+    var(--shadow) 2%,
+    var(--shadow) 98%,
     transparent
   );
 }
@@ -40,9 +40,14 @@
   gap: 1rem;
   scroll-snap-align: center;
   padding: 1.5rem;
-  border-radius: 0.25rem;
+  border-radius: var(--radius);
   box-shadow: 0px 2px 10px var(--shadow);
   cursor: pointer;
+  transition: 200ms ease;
+}
+
+.carousel-card:hover {
+  scale: 1.05;
 }
 
 .carousel-card img {
@@ -56,23 +61,7 @@
 #prevBtn:disabled {
   opacity: 0.5;
   color: var(--muted-foreground);
-  cursor: not-allowed;
-}
-
-#nextBtn,
-#prevBtn {
-  font-size: 1.5rem;
-  position: absolute;
-}
-
-#nextBtn {
-  right: 0%;
-  top: 50%;
-}
-
-#prevBtn {
-  left: 0%;
-  top: 50%;
+  cursor: default;
 }
 
 #carousel-section {
@@ -87,10 +76,16 @@
 
 .carousel-btns {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
+  gap: 1rem;
   padding-bottom: 1rem;
 
   color: var(--foreground);
+}
+
+#nextBtn,
+#prevBtn {
+  font-size: 1.5rem;
 }
 
 @media (max-width: 800px) {
