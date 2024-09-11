@@ -31,16 +31,46 @@
   color: var(--foreground);
 }
 
+.icon {
+  background-color: var(--background);
+  outline: 0;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.icon svg {
+  color: var(--foreground);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bi-person-fill {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 .primary:hover {
   background-color: var(--secondary);
 }
 
 button {
   cursor: pointer;
-  padding: 0.3rem 0.8rem 0.3rem 0.8rem;
+
   font-size: 1rem;
 }
 
-.nav-btn {
-  padding: 0.3rem 0.8rem 0.3rem 0.8rem;
+@media (max-width: 768px) {
+  #signOutBtn > span {
+    display: none;
+  }
+  #signOutBtn {
+    width: 2.5rem;
+  }
 }

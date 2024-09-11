@@ -80,10 +80,12 @@ export async function readPosts(page = 1, limit = 12) {
         image.src = "/images/placeholder.jpg";
         image.alt = "Place-holder image";
       }
+      const date = document.createElement("span");
+      date.textContent = timeSince(post.created);
       card.addEventListener("click", () => {
         window.location.href = `/post/?id=${post.id}`;
       });
-      card.append(title, image);
+      card.append(title, image, date);
       container.append(card);
     });
 
