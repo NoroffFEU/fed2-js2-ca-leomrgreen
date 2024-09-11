@@ -1,14 +1,14 @@
+import timeSince from "../../utilities/getDate";
+import { nextButton, prevButton } from "../constants";
 import socialAPI from "./index";
 
 const api = new socialAPI();
-const prevButton = document.getElementById("prev-page");
-const nextButton = document.getElementById("next-page");
 
 export async function readPost(id) {
   try {
     const res = await api.post.readSinglePost(id);
     const post = res.data;
-
+    console.log(post);
     const container = document.getElementById("post-container");
     container.innerHTML = "";
 
@@ -21,13 +21,29 @@ export async function readPost(id) {
       image.alt = "Place-holder image";
     }
 
+    const desc = document.createElement("div");
+    desc.className = "description";
+
     const title = document.createElement("h1");
     title.textContent = post.title;
 
     const body = document.createElement("p");
     body.textContent = post.body;
 
-    container.append(image, title, body);
+    const tags = document.createElement("ul");
+    tags.className = "tags";
+
+    post.tags.forEach((tag) => {
+      const li = document.createElement("li");
+      li.textContent = `#${tag}`;
+      tags.appendChild(li);
+    });
+
+    const date = document.createElement("span");
+    date.textContent = timeSince(post.created);
+
+    desc.append(title, body, tags);
+    container.append(image, desc, date);
   } catch (error) {
     console.error(error);
   }

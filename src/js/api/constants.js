@@ -21,3 +21,7 @@ export const API_SOCIAL_PROFILES = `${API_SOCIAL}/profiles`;
 export const token = localStorage.accessToken;
 
 export const user = localStorage.user;
+
+export const prevButton = document.getElementById("prev-page");
+
+export const nextButton = document.getElementById("next-page");

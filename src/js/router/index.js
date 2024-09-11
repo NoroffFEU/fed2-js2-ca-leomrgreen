@@ -1,13 +1,13 @@
 import setThemeListener from "../theme/theme";
 import setLogoutListener from "../ui/global/logout.js";
-import navMenu from "../utilities/nav";
+// import navMenu from "../utilities/nav";
 // This function controls which JavaScript file is loaded on which page
 // In order to add additional pages, you will need to implement them below
 // You may change the behaviour or approach of this file if you choose
 export default async function router(pathname = window.location.pathname) {
   setLogoutListener();
   setThemeListener();
-  navMenu();
+  // navMenu();
 
   switch (pathname) {
     case "/":
