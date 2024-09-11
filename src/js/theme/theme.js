@@ -5,23 +5,23 @@ export default function setThemeListener() {
   const themeBtn = document.getElementById("themeBtn");
   const htmlElement = document.documentElement;
 
-  // Kolla om ett tema redan är satt i localStorage
+  // Check if user already has a theme set in their local storage
   let savedTheme = storage.load("theme");
 
-  // Om inget tema finns i storage, sätt "light" som default
+  // if no theme is found in local storage, then set "light" as default
   if (!savedTheme) {
     savedTheme = "light";
     storage.save("theme", savedTheme);
   }
 
-  // Applicera det sparade temat (dark eller light)
+  // Apply the theme depending on what value is in local storage
   if (savedTheme === "dark") {
-    htmlElement.classList.add("dark"); // Lägg till "dark" om det sparade temat är mörkt
+    htmlElement.classList.add("dark"); // Apply dark if user switch to dark mode
   } else {
-    htmlElement.classList.remove("dark"); // Se till att "dark" inte finns om temat är ljus
+    htmlElement.classList.remove("dark"); // remove dark class if the value dark is not in storage
   }
 
-  // Lägg till event listener för att lyssna efter klick på themeBtn
+  // listen for our toggleTheme function
   if (themeBtn) {
     themeBtn.addEventListener("click", toggleTheme);
   }
