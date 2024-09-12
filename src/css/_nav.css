@@ -61,12 +61,17 @@ li a {
   border-radius: var(--radius);
   align-items: center;
   padding: 0.5rem 1rem;
+  color: var(--muted-foreground);
 }
 
 #dropdownMenu li:hover {
   background-color: var(--muted);
   border-radius: var(--radius);
   transition: 200ms ease;
+}
+
+#dropdownMenu li a:hover {
+  color: var(--foreground);
 }
 
 #dropdownMenu li span {

@@ -26,11 +26,20 @@ export async function carousel() {
     carouselCard.addEventListener("click", () => {
       window.location.href = `/post/?id=${item.id}`;
     });
-    carouselCard.append(carouselImage, carouselTitle);
+
+    const commentCount = document.createElement("span");
+    commentCount.className = "comment-count";
+    if (item._count.comments) {
+      commentCount.innerHTML = `${item._count.comments} <i class="fa-regular fa-comment"></i> `;
+    } else {
+      commentCount.innerHTML = `0 <i class="fa-regular fa-comment"></i>`;
+    }
+    carouselCard.append(carouselImage, carouselTitle, commentCount);
     carouselContainer.appendChild(carouselCard);
   });
 
   // Initialize button logic
+
   initializeButtons(carouselItems.length);
 }
 

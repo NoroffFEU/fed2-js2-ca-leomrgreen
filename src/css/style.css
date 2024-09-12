@@ -16,4 +16,17 @@ body {
 
 p {
   color: var(--muted-foreground);
+  font-size: 1rem;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.2rem;
 }

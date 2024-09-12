@@ -17,8 +17,11 @@ h2 {
 
 #post-container img {
   max-width: 100%;
+  object-fit: cover;
+  aspect-ratio: 1;
   border-radius: inherit;
   margin-inline: auto;
+  border: 1px solid var(--border);
 }
 
 .description {
