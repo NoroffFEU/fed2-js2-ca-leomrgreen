@@ -1,5 +1,5 @@
 main {
-  width: min(70rem, 95%);
+  width: min(120rem, 97%);
   display: grid;
   gap: 2rem;
   margin-inline: auto;
