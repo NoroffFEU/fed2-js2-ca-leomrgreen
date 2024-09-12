@@ -62,3 +62,11 @@
 .bi-moon-stars {
   display: block;
 }
+
+body {
+  transition: 200ms ease;
+}
+
+body .dark {
+  transition: 200ms ease;
+}
