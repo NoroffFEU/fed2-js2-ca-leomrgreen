@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,9 +8,45 @@
   </head>
   <body>
     <h1>Create Post</h1>
-
     <form name="createPost">
-      <button>Create Post</button>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Your caption..."
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="body">Body</label>
+        <input type="text" name="body" id="body" placeholder="Description..." />
+      </div>
+      <div class="form-group">
+        <label for="media-url">Media URL</label>
+        <input
+          type="url"
+          name="media-url"
+          id="media-url"
+          placeholder="Insert your image url"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="media-alt">Media ALT</label>
+        <input
+          type="text"
+          name="media-alt"
+          id="media-alt"
+          placeholder="Alt text for image"
+        />
+      </div>
+      <div class="form-group">
+        <label for="tags">Tags</label>
+        <input type="text" name="tags" id="tags" placeholder="Tags" />
+      </div>
+      <button type="submit" class="primary">Create Post</button>
     </form>
   </body>
 </html>

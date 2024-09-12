@@ -1,9 +1,9 @@
 import timeSince from "../../utilities/getDate";
 import { updatePaginationControls } from "../../utilities/pagination";
 import { nextButton, prevButton } from "../constants";
-import socialAPI from "./index";
+import SocialAPI from "./index";
 
-const api = new socialAPI();
+const api = new SocialAPI();
 
 export async function readPost(id) {
   try {

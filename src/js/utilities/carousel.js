@@ -1,6 +1,6 @@
 import { carouselContainer } from "../api/constants";
-import socialAPI from "../api/post";
-const api = new socialAPI();
+import SocialAPI from "../api/post";
+const api = new SocialAPI();
 
 export async function carousel() {
   const res = await api.post.readAll();
