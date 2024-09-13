@@ -11,6 +11,7 @@ export async function carousel() {
     .sort((a, b) => b._count.reactions - a._count.reactions)
     .slice(0, 9);
 
+  console.log(carouselItems);
   // Create and append carousel items
   carouselItems.forEach((item) => {
     const carouselCard = document.createElement("div");
@@ -27,14 +28,7 @@ export async function carousel() {
       window.location.href = `/post/?id=${item.id}`;
     });
 
-    const commentCount = document.createElement("span");
-    commentCount.className = "comment-count";
-    if (item._count.comments) {
-      commentCount.innerHTML = `${item._count.comments} <i class="fa-regular fa-comment"></i> `;
-    } else {
-      commentCount.innerHTML = `0 <i class="fa-regular fa-comment"></i>`;
-    }
-    carouselCard.append(carouselImage, carouselTitle, commentCount);
+    carouselCard.append(carouselImage, carouselTitle);
     carouselContainer.appendChild(carouselCard);
   });
 

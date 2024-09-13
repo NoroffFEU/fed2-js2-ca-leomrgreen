@@ -2,6 +2,7 @@ import timeSince from "../../utilities/getDate";
 import { updatePaginationControls } from "../../utilities/pagination";
 import { nextButton, prevButton } from "../constants";
 import SocialAPI from "./index";
+let currentPage = 1;
 
 const api = new SocialAPI();
 
@@ -99,9 +100,8 @@ export async function readPosts(page = 1, limit = 12) {
 // this functions controls if we want to display each control based on currentPage index and our total of posts.
 
 // Pagination state
-let currentPage = 1;
 
-function updatePosts() {
+function renderPosts() {
   readPosts(currentPage, 12);
 }
 
@@ -110,7 +110,7 @@ if (prevButton) {
   prevButton.addEventListener("click", () => {
     if (currentPage > 1) {
       currentPage--;
-      updatePosts();
+      renderPosts();
     }
   });
 }
@@ -120,8 +120,8 @@ if (nextButton) {
   nextButton.addEventListener("click", () => {
     currentPage++;
     console.log(currentPage);
-    updatePosts();
+    renderPosts();
   });
 }
 
-export async function readPostsByUser(username, limit = 12, page = 1, tag) {}
+export async function readPostsByUser() {}

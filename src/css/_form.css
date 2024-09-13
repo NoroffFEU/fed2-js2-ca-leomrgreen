@@ -42,7 +42,25 @@ input::placeholder {
   box-shadow: 0 0 0 1000px var(--card) inset;
   -webkit-text-fill-color: var(--foreground) !important;
   color: var(--foreground) !important;
-
-  /* Ta bort gräns och outline */
   outline: none !important;
+}
+
+.dark input:disabled {
+  background-color: hsla(0, 0%, 27%, 0.2);
+}
+
+input:disabled {
+  background-color: hsla(0, 0%, 44%, 0.171);
+}
+
+input:disabled {
+  cursor: not-allowed;
+}
+
+.update-form {
+  background-color: var(--card);
+  width: min(30rem, 100%);
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
 }

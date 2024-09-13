@@ -34,6 +34,7 @@
 
 .icon {
   background-color: var(--background);
+  color: var(--foreground);
   outline: 0;
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -63,8 +64,17 @@
 
 button {
   cursor: pointer;
-
   font-size: 1rem;
+}
+
+#closeBtn {
+  transition: 200ms ease;
+  margin-left: auto;
+}
+
+#closeBtn:hover {
+  background-color: var(--muted);
+  transition: 200ms ease;
 }
 
 @media (max-width: 768px) {
