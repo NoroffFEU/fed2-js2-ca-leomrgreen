@@ -43,8 +43,10 @@ h5 {
 #pagination-controls {
   position: relative;
   align-items: center;
+  display: flex;
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
+  background-color: red;
 }
 
 #next-page {
