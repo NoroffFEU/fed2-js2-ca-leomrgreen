@@ -1,4 +1,4 @@
-import setThemeListener from "../theme/theme";
+import setThemeListener from "../theme/index.js";
 import setLogoutListener from "../ui/global/logout.js";
 import setDropDownListener from "../utilities/nav";
 // This function controls which JavaScript file is loaded on which page
