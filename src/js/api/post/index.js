@@ -10,53 +10,59 @@ export default class SocialAPI {
     this.apiPost = `${apiBase}/social/posts`;
   }
 
+  // Generic method to handle API requests
+  fetchData = async (endpoint, method = "GET", body = null) => {
+    try {
+      const res = await fetch(endpoint, {
+        method,
+        headers: headers(),
+        body: body ? JSON.stringify(body) : undefined,
+      });
+      if (res.ok) {
+        const data = await res.json();
+        return data;
+      } else {
+        alert(
+          `Failed to ${
+            method === "GET" ? "fetch" : "create/update"
+          }, please try again`
+        );
+      }
+    } catch (error) {
+      console.error("Error in API request:", error);
+      throw error;
+    }
+  };
+
   post = {
     readAll: async () => {
-      try {
-        const res = await fetch(this.apiPost, {
-          method: "GET",
-          headers: headers(),
-        });
-        const data = await res.json();
-        console.log(data);
-        return data;
-      } catch (error) {
-        console.error(error);
-      }
+      const endpoint = this.apiPost;
+      const data = await this.fetchData(endpoint);
+      console.log("All posts:", data);
+      return data;
     },
-    readSinglePost: async (id) => {
-      try {
-        const res = await fetch(`${this.apiPost}/${id}`, {
-          method: "GET",
-          headers: headers(),
-        });
-        const data = await res.json();
-        console.log(data);
-        return data;
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    create: async ({ title, body, tags, media }) => {
-      console.log("Creating post with data:", { title, body, tags, media });
-      const requestBody = JSON.stringify({ title, body, tags, media });
-      console.log("Request body:", requestBody);
 
-      try {
-        const res = await fetch(this.apiPost, {
-          method: "POST",
-          headers: headers(),
-          body: requestBody,
-        });
-        if (res.ok) {
-          const data = await res.json();
-          console.log("Post creation successful. Response data:", data);
-          return data;
-        }
-      } catch (error) {
-        console.log("Error in post creation:", error.message);
-        throw error;
-      }
+    readSinglePost: async (id) => {
+      const endpoint = `${this.apiPost}/${id}`;
+      const data = await this.fetchData(endpoint);
+      console.log("Single post:", data);
+      return data;
+    },
+
+    readPostByUser: async (username) => {
+      const endpoint = `${this.apiPost}/${username}`;
+      const data = await this.fetchData(endpoint);
+      console.log("User posts:", data);
+      return data;
+    },
+
+    create: async ({ title, body, tags, media }) => {
+      const requestBody = { title, body, tags, media };
+      console.log("Creating post with data:", requestBody);
+      const endpoint = this.apiPost;
+      const data = await this.fetchData(endpoint, "POST", requestBody);
+      console.log("Post creation successful. Response data:", data);
+      return data;
     },
   };
 }

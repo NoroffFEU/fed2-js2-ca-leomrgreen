@@ -1,5 +1,6 @@
 import { API_BASE } from "../constants";
 import { headers } from "../headers";
+import * as storage from "../../utilities/storage";
 
 export default class ProfileAPI {
   apiBase = "";
@@ -10,44 +11,49 @@ export default class ProfileAPI {
     this.apiProfile = `${apiBase}/social/profiles`;
   }
 
+  // Generic method to handle API requests
+  fetchData = async (endpoint, method = "GET", body = null) => {
+    try {
+      const res = await fetch(endpoint, {
+        method,
+        headers: headers(),
+        body: body ? JSON.stringify(body) : undefined,
+      });
+      if (res.ok) {
+        const data = await res.json();
+        return data;
+      } else {
+        alert(
+          `Failed to ${method === "GET" ? "fetch" : "update"}, please try again`
+        );
+      }
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  };
+
   profile = {
     read: async (username) => {
-      try {
-        const res = await fetch(`${this.apiProfile}/${username}`, {
-          method: "GET",
-          headers: headers(),
-        });
-        if (res.ok) {
-          const data = await res.json();
-          console.log("user received: ", data);
-          return data;
-        } else {
-          alert("Could not find user");
-        }
-      } catch (error) {
-        console.log(error);
-        throw error;
-      }
+      const endpoint = `${this.apiProfile}/${username}`;
+      const data = await this.fetchData(endpoint);
+      console.log("User received: ", data);
+      return data;
     },
+
     update: async (username, formData) => {
-      const body = JSON.stringify(formData);
-      try {
-        const res = await fetch(`${this.apiProfile}/${username}`, {
-          method: "PUT",
-          headers: headers(),
-          body,
-        });
-        if (res.ok) {
-          const data = await res.json();
-          console.log("Updated user: ", data);
-          return data;
-        } else {
-          alert("Failed to update profile, please try again");
-        }
-      } catch (error) {
-        console.log(error);
-        throw error;
-      }
+      const endpoint = `${this.apiProfile}/${username}`;
+      const data = await this.fetchData(endpoint, "PUT", formData);
+      console.log("Updated user: ", data);
+      return data;
+    },
+
+    // New method to read profile posts
+    readPosts: async (username) => {
+      const endpoint = `${this.apiProfile}/${username}/posts`;
+      const data = await this.fetchData(endpoint);
+      console.log("Profile posts received: ", data);
+      return data;
     },
   };
 }

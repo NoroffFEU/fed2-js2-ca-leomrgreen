@@ -51,4 +51,4 @@ export async function readProfile() {
   container.append(avatarContainer, infoContainer);
 }
 
-export async function readProfiles(limit, page) {}
+export async function readProfilePosts() {}
