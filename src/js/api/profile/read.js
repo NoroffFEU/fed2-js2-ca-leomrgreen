@@ -51,4 +51,25 @@ export async function readProfile() {
   container.append(avatarContainer, infoContainer);
 }
 
-export async function readProfilePosts() {}
+export async function readProfilePosts() {
+  const res = await api.profile.readPosts(username);
+  const profilePosts = res.data;
+  const container = document.getElementById("profile-post-container");
+
+  profilePosts.forEach((post) => {
+    const postCard = document.createElement("div");
+    const image = document.createElement("img");
+    if (post.media && post.media.url) {
+      image.src = post.media.url;
+      image.alt = post.media.alt || "Image not available";
+    } else {
+      image.src = "/images/placeholder.jpg";
+      image.alt = "Place-holder image";
+    }
+    const title = document.createElement("h3");
+    title.textContent = post.title;
+
+    postCard.append(image, title);
+    container.appendChild(postCard);
+  });
+}

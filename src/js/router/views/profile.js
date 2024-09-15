@@ -1,5 +1,5 @@
 import { authGuard } from "../../utilities/authGuard";
-import { readProfile } from "../../api/profile/read";
+import { readProfile, readProfilePosts } from "../../api/profile/read";
 import { onUpdateProfile } from "../../ui/profile/update";
 import updatePlaceholder from "../../utilities/custom-placeholder";
 
@@ -10,3 +10,4 @@ form.addEventListener("submit", onUpdateProfile);
 authGuard();
 readProfile();
 updatePlaceholder();
+readProfilePosts();
