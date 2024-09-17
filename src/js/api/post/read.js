@@ -1,3 +1,4 @@
+import animateOnScroll from "../../utilities/animateOnScroll";
 import timeSince from "../../utilities/getDate";
 import { updatePaginationControls } from "../../utilities/pagination";
 import { nextButton, prevButton } from "../constants";
@@ -70,7 +71,7 @@ export async function readPosts(page = 1, limit = 12) {
     // generate html for each social post
     paginatedPosts.forEach((post) => {
       const card = document.createElement("div");
-      card.className = "post-card";
+      card.className = "post-card hidden";
       const title = document.createElement("h3");
       title.textContent = post.title;
       const image = document.createElement("img");
@@ -92,6 +93,8 @@ export async function readPosts(page = 1, limit = 12) {
 
     // calls the update function for the controls with help of parameters
     updatePaginationControls(page, posts.length, limit);
+
+    animateOnScroll();
   } catch (error) {
     console.error("Error fetching posts:", error);
   }

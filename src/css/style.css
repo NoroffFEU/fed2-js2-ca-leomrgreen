@@ -34,3 +34,15 @@ h2 {
 h3 {
   font-size: 1.2rem;
 }
+
+.hidden {
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  transform: translateY(2rem);
+}
+
+.show {
+  opacity: 1;
+  transition: 200ms ease-in-out;
+  transform: translateY(0);
+}
