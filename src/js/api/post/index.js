@@ -1,3 +1,4 @@
+import { hideLoader, showLoader } from "../../utilities/loader";
 import { API_BASE } from "../constants";
 import { headers } from "../headers";
 
@@ -13,12 +14,18 @@ export default class SocialAPI {
   // Generic method to handle API requests
   fetchData = async (endpoint, method = "GET", body = null) => {
     try {
+      showLoader();
       const res = await fetch(endpoint, {
         method,
         headers: headers(),
         body: body ? JSON.stringify(body) : undefined,
       });
+
+      // Check for 204 No Content
       if (res.ok) {
+        if (res.status === 204) {
+          return; // No content to return
+        }
         const data = await res.json();
         return data;
       } else {
@@ -31,6 +38,9 @@ export default class SocialAPI {
     } catch (error) {
       console.error("Error in API request:", error);
       throw error;
+    } finally {
+      console.log("lets go");
+      hideLoader();
     }
   };
 
@@ -62,6 +72,12 @@ export default class SocialAPI {
       const endpoint = this.apiPost;
       const data = await this.fetchData(endpoint, "POST", requestBody);
       console.log("Post creation successful. Response data:", data);
+      return data;
+    },
+
+    delete: async (id) => {
+      const endpoint = `${this.apiPost}/${id}`;
+      const data = await this.fetchData(endpoint, "DELETE");
       return data;
     },
   };

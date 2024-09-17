@@ -68,6 +68,30 @@ button {
   transition: 200ms ease;
 }
 
+.destructive {
+  background-color: var(--destructive);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radius);
+  padding: 0.5rem 1rem;
+  color: white;
+  gap: 0.2rem;
+  position: absolute;
+  top: -1rem;
+  right: 0rem;
+}
+
+.destructive > svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.destructive:hover {
+  background-color: rgb(92, 0, 0);
+}
+
 #closeBtn {
   transition: 200ms ease;
   margin-left: auto;

@@ -1,6 +1,7 @@
 import { API_BASE } from "../constants";
 import { headers } from "../headers";
 import * as storage from "../../utilities/storage";
+import { hideLoader, showLoader } from "../../utilities/loader";
 
 export default class ProfileAPI {
   apiBase = "";
@@ -14,6 +15,7 @@ export default class ProfileAPI {
   // Generic method to handle API requests
   fetchData = async (endpoint, method = "GET", body = null) => {
     try {
+      showLoader();
       const res = await fetch(endpoint, {
         method,
         headers: headers(),
@@ -30,6 +32,8 @@ export default class ProfileAPI {
     } catch (error) {
       console.error(error);
       throw error;
+    } finally {
+      hideLoader();
     }
   };
 
@@ -48,7 +52,6 @@ export default class ProfileAPI {
       return data;
     },
 
-    // New method to read profile posts
     readPosts: async (username) => {
       const endpoint = `${this.apiProfile}/${username}/posts`;
       const data = await this.fetchData(endpoint);
