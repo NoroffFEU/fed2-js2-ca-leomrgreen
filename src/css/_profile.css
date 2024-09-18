@@ -71,6 +71,28 @@
   border: 1px solid var(--border);
 }
 
+#noPostContainer {
+  display: flex;
+  justify-content: center;
+}
+
+#noPostContainer div {
+  display: grid;
+  margin: auto;
+  color: var(--muted-foreground);
+  border: 1px solid var(--border);
+  padding: 5rem;
+  border-radius: var(--radius);
+  box-shadow: 0px 2px 10px var(--shadow);
+  aspect-ratio: 1;
+  place-items: center;
+}
+
+#noPostContainer div > svg {
+  width: 10rem;
+  height: 10rem;
+}
+
 @media (max-width: 1200px) {
   #profile-post-container {
     grid-template-columns: repeat(3, 1fr);
