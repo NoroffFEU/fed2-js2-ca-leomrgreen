@@ -4,7 +4,7 @@ import timeSince from "./getDate";
 // function that generates HTML (card) and adds different features based on the URL
 export function createPostCard(post) {
   const card = document.createElement("div");
-  card.className = "post-card";
+  card.className = "post-card hidden";
 
   const title = document.createElement("h3");
   title.textContent = post.title;

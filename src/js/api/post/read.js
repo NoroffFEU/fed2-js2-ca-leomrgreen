@@ -2,6 +2,7 @@ import animateOnScroll from "../../utilities/animateOnScroll";
 import { createPostCard } from "../../utilities/card";
 import timeSince from "../../utilities/getDate";
 import { updatePaginationControls } from "../../utilities/pagination";
+import skeletonLoader from "../../utilities/skeleton";
 import { nextButton, prevButton } from "../constants";
 import SocialAPI from "./index";
 let currentPage = 1;
@@ -19,6 +20,7 @@ export async function readPost(id) {
     // Create post card and append it to container
     const card = createPostCard(post);
     container.appendChild(card);
+    animateOnScroll();
   } catch (error) {
     console.error(error);
   }
@@ -26,32 +28,33 @@ export async function readPost(id) {
 
 export async function readPosts(page = 1, limit = 12) {
   try {
+    const container = document.getElementById("posts-container");
+
+    skeletonLoader(limit, container); // Show skeleton loaders
+
     const res = await api.post.readAll();
     const posts = res.data;
 
-    // sort the array of posts based on it's creation date
     posts.sort((a, b) => new Date(b.created) - new Date(a.created));
 
-    // Calculate the start and end index for each page
     const startIndex = (page - 1) * limit;
     const endIndex = startIndex + limit;
     const paginatedPosts = posts.slice(startIndex, endIndex);
 
-    const container = document.getElementById("posts-container");
     container.innerHTML = "";
 
-    // generate html for each social post
     paginatedPosts.forEach((post) => {
       const card = createPostCard(post);
       container.append(card);
     });
 
-    // calls the update function for the controls with help of parameters
-    updatePaginationControls(page, posts.length, limit);
+    // hideSkeletonLoader(); // Hide skeleton loaders once posts are loaded
 
+    updatePaginationControls(page, posts.length, limit);
     animateOnScroll();
   } catch (error) {
     console.error("Error fetching posts:", error);
+    // hideSkeletonLoader(); // Ensure skeleton loaders are hidden even if there's an error
   }
 }
 

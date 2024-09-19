@@ -2,6 +2,7 @@ import * as storage from "../../utilities/storage";
 import ProfileAPI from ".";
 import modal from "../../utilities/modal";
 import { createPostCard } from "../../utilities/card";
+import animateOnScroll from "../../utilities/animateOnScroll";
 
 const api = new ProfileAPI();
 
@@ -76,4 +77,5 @@ export async function readProfilePosts() {
     const card = createPostCard(post);
     container.append(card);
   });
+  animateOnScroll(); // checks for cards to animate into view
 }
