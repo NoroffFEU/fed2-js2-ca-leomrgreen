@@ -80,5 +80,13 @@ export default class SocialAPI {
       const data = await this.fetchData(endpoint, "DELETE");
       return data;
     },
+
+    update: async (id, { title, body, tags, media }) => {
+      const requestBody = { title, body, tags, media };
+      const endpoint = `${this.apiPost}/${id}`;
+      const data = await this.fetchData(endpoint, "PUT", requestBody);
+      console.log("Post updated");
+      return data;
+    },
   };
 }
