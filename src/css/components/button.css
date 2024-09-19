@@ -81,6 +81,7 @@ button {
   position: absolute;
   top: -1rem;
   right: 0rem;
+  height: 2.5rem;
 }
 
 .destructive > svg {
@@ -112,6 +113,29 @@ button {
 .signup-btn {
   width: 100%;
   text-decoration: none;
+}
+
+.edit-btn {
+  background-color: var(--muted);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radius);
+  padding: 0rem 1.3rem;
+  border: 1px solid var(--border);
+  gap: 0.5rem;
+  color: var(--foreground);
+  position: absolute;
+  top: -1rem;
+  z-index: 1000;
+  left: 0rem;
+  height: 2.5rem;
+}
+
+.edit-btn > svg {
+  width: 1.2rem;
+  height: 1.2rem;
 }
 
 @media (max-width: 768px) {

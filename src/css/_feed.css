@@ -21,7 +21,6 @@ main {
   border-radius: var(--radius);
   padding: 1rem;
   box-shadow: 0px 2px 10px var(--shadow);
-  cursor: pointer;
 }
 
 h5 {

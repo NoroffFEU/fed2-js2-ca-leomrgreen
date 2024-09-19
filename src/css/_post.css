@@ -1,13 +1,6 @@
 #post-container {
   width: min(30rem, 100%);
   margin: auto;
-  display: grid;
-  padding: 1rem;
-  border-radius: var(--radius);
-  box-shadow: 0 2px 10px var(--shadow);
-  text-align: start;
-  gap: 1rem;
-  border: 1px solid var(--border);
 }
 
 h2 {
@@ -16,19 +9,7 @@ h2 {
 }
 
 #post-container img {
-  max-width: 100%;
-  object-fit: cover;
   aspect-ratio: 1;
-  border-radius: inherit;
-  margin-inline: auto;
-  border: 1px solid var(--border);
-}
-
-.description {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
 }
 
 .tags {

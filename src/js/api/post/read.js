@@ -1,4 +1,5 @@
 import animateOnScroll from "../../utilities/animateOnScroll";
+import { createPostCard } from "../../utilities/card";
 import timeSince from "../../utilities/getDate";
 import { updatePaginationControls } from "../../utilities/pagination";
 import { nextButton, prevButton } from "../constants";
@@ -13,40 +14,11 @@ export async function readPost(id) {
     const post = res.data;
     console.log(post);
     const container = document.getElementById("post-container");
-    container.innerHTML = "";
+    container.innerHTML = ""; // Clear existing content
 
-    const image = document.createElement("img");
-    if (post.media && post.media.url) {
-      image.src = post.media.url;
-      image.alt = post.media.alt || "Image not available";
-    } else {
-      image.src = "/images/placeholder.jpg";
-      image.alt = "Place-holder image";
-    }
-
-    const desc = document.createElement("div");
-    desc.className = "description";
-
-    const title = document.createElement("h2");
-    title.textContent = post.title;
-
-    const body = document.createElement("p");
-    body.textContent = post.body;
-
-    const tags = document.createElement("ul");
-    tags.className = "tags";
-
-    post.tags.forEach((tag) => {
-      const li = document.createElement("li");
-      li.textContent = `#${tag}`;
-      tags.appendChild(li);
-    });
-
-    const date = document.createElement("span");
-    date.textContent = timeSince(post.created);
-
-    desc.append(title, body, tags);
-    container.append(image, desc, date);
+    // Create post card and append it to container
+    const card = createPostCard(post);
+    container.appendChild(card);
   } catch (error) {
     console.error(error);
   }
@@ -70,24 +42,7 @@ export async function readPosts(page = 1, limit = 12) {
 
     // generate html for each social post
     paginatedPosts.forEach((post) => {
-      const card = document.createElement("div");
-      card.className = "post-card hidden";
-      const title = document.createElement("h3");
-      title.textContent = post.title;
-      const image = document.createElement("img");
-      if (post.media && post.media.url) {
-        image.src = post.media.url;
-        image.alt = post.media.alt || "Image not available";
-      } else {
-        image.src = "/images/placeholder.jpg";
-        image.alt = "Place-holder image";
-      }
-      const date = document.createElement("span");
-      date.textContent = timeSince(post.created);
-      card.addEventListener("click", () => {
-        window.location.href = `/post/?id=${post.id}`;
-      });
-      card.append(title, image, date);
+      const card = createPostCard(post);
       container.append(card);
     });
 
