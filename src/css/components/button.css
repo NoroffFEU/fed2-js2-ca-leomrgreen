@@ -108,6 +108,12 @@ button {
   transition: 200ms ease;
 }
 
+.login-btn,
+.signup-btn {
+  width: 100%;
+  text-decoration: none;
+}
+
 @media (max-width: 768px) {
   #signOutBtn > span {
     display: none;

@@ -13,11 +13,11 @@
       <img src="/images/noroff-logo.png" alt="Noroff Logo" />
       <ul>
         <li>
-          <button id="themeBtn" class="outline">
+          <button id="themeBtn" class="icon nav-btn">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
+              width="19"
+              height="19"
               fill="currentColor"
               class="bi bi-moon-stars"
               viewBox="0 0 16 16"
@@ -31,8 +31,8 @@
             </svg>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
+              width="20"
+              height="20"
               fill="currentColor"
               class="bi bi-brightness-high"
               viewBox="0 0 16 16"
@@ -45,47 +45,49 @@
         </li>
       </ul>
     </nav>
-    <h1>Register</h1>
+    <main class="auth-main">
+      <form name="register">
+        <h1>Register</h1>
 
-    <form name="register">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input
-          id="name"
-          type="text"
-          name="name"
-          required
-          maxlength="20"
-          pattern="^[\w]+$"
-          title="Please enter a username using only letters and numbers. Special characters and spaces are not allowed"
-        />
-      </div>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            required
+            maxlength="20"
+            pattern="^[\w]+$"
+            title="Please enter a username using only letters and numbers. Special characters and spaces are not allowed"
+          />
+        </div>
 
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          name="email"
-          required
-          pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
-          title="Please enter a valid noroff.no or stud.noroff.no address"
-        />
-      </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            required
+            pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
+            title="Please enter a valid noroff.no or stud.noroff.no address"
+          />
+        </div>
 
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          required
-          minlength="8"
-        />
-      </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            required
+            minlength="8"
+          />
+        </div>
 
-      <a href="/auth/login/">Login</a>
-      <button type="submit" class="primary">Register</button>
-    </form>
+        <a href="/auth/login/">Login</a>
+        <button type="submit" class="primary">Register</button>
+      </form>
+    </main>
   </body>
 </html>

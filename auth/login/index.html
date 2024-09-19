@@ -11,11 +11,11 @@
       <img src="/images/noroff-logo.png" alt="Noroff Logo" />
       <ul>
         <li>
-          <button id="themeBtn" class="outline">
+          <button id="themeBtn" class="icon nav-btn">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
+              width="19"
+              height="19"
               fill="currentColor"
               class="bi bi-moon-stars"
               viewBox="0 0 16 16"
@@ -29,8 +29,8 @@
             </svg>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
+              width="20"
+              height="20"
               fill="currentColor"
               class="bi bi-brightness-high"
               viewBox="0 0 16 16"
@@ -43,18 +43,20 @@
         </li>
       </ul>
     </nav>
-    <h1>Login</h1>
-    <form name="login">
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input id="email" type="email" name="email" required />
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required />
-      </div>
-      <a href="/auth/register/">Register</a>
-      <button type="submit" class="primary">Login</button>
-    </form>
+    <main class="auth-main">
+      <form name="login">
+        <h1>Login</h1>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" required />
+        </div>
+        <a href="/auth/register/">Register</a>
+        <button type="submit" class="primary">Login</button>
+      </form>
+    </main>
   </body>
 </html>
