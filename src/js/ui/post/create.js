@@ -24,7 +24,6 @@ export async function onCreatePost(e) {
   try {
     await api.post.create(postData);
     alert("Post successfully created!");
-    window.location.href = "/";
   } catch (error) {
     console.log(error);
   }

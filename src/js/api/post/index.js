@@ -71,7 +71,8 @@ export default class SocialAPI {
       console.log("Creating post with data:", requestBody);
       const endpoint = this.apiPost;
       const data = await this.fetchData(endpoint, "POST", requestBody);
-      console.log("Post creation successful. Response data:", data);
+      console.log("id:", data.data.id);
+      window.location.href = `/post/?id=${data.data.id}`;
       return data;
     },
 
