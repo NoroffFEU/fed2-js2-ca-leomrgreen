@@ -5,6 +5,10 @@ main {
   margin-inline: auto;
 }
 
+.feed-section {
+  margin-bottom: 3rem;
+}
+
 #posts-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
