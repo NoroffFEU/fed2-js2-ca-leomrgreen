@@ -11,10 +11,12 @@ const api = new SocialAPI();
 
 export async function readPost(id) {
   try {
+    const container = document.getElementById("post-container");
+    skeletonLoader(1, container);
     const res = await api.post.readSinglePost(id);
     const post = res.data;
     console.log(post);
-    const container = document.getElementById("post-container");
+
     container.innerHTML = ""; // Clear existing content
 
     // Create post card and append it to container

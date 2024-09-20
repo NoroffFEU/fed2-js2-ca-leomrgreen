@@ -17,7 +17,7 @@
   display: none;
 }
 
-.carousel-card {
+#carousel-container div {
   min-width: 40%;
   border: 1px solid var(--border);
   display: flex;
@@ -33,11 +33,11 @@
   color: var(--muted-foreground);
 }
 
-.carousel-card:hover {
+#carousel-containerhover {
   scale: 1.05;
 }
 
-.carousel-card img {
+#carousel-container img {
   max-width: 100%;
   aspect-ratio: 4/3;
   border-radius: inherit;
@@ -75,22 +75,13 @@
   font-size: 1.5rem;
 }
 
-.comment-count {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  gap: 0.3rem;
-  color: var(--foreground);
-  font-size: 1.1rem;
-}
-
 @media (max-width: 800px) {
   #nextBtn,
   #prevBtn {
     display: none;
   }
 
-  .carousel-card {
+  #carousel-container div {
     min-width: 90%;
   }
 }

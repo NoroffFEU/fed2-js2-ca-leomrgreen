@@ -4,6 +4,7 @@
 @import url(_form.css);
 @import url(_nav.css);
 @import "./components/button.css";
+@import "./components/skeleton.css";
 @import url(_feed.css);
 @import url(_post.css);
 @import url(_carousel.css);

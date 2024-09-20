@@ -1,11 +1,14 @@
 import { carouselContainer } from "../api/constants";
+import { createPostCard } from "./card";
 import SocialAPI from "../api/post";
+import skeletonLoader from "./skeleton";
 const api = new SocialAPI();
 
 export async function carousel() {
+  skeletonLoader(9, carouselContainer);
+
   const res = await api.post.readAll();
   const data = res.data;
-
   // Sort by most reactions and take the top 9
   const carouselItems = data
     .sort((a, b) => b._count.reactions - a._count.reactions)
@@ -13,28 +16,48 @@ export async function carousel() {
 
   console.log(carouselItems);
   // Create and append carousel items
+  carouselContainer.innerHTML = "";
   carouselItems.forEach((item) => {
-    const carouselCard = document.createElement("div");
-    carouselCard.className = "carousel-card";
-
-    const carouselImage = document.createElement("img");
-    carouselImage.src = item.media?.url || "/images/placeholder.jpg";
-    carouselImage.alt = item.media?.alt || "Placeholder image";
-
-    const carouselTitle = document.createElement("h3");
-    carouselTitle.textContent = item.title;
-
-    carouselCard.addEventListener("click", () => {
-      window.location.href = `/post/?id=${item.id}`;
-    });
-
-    carouselCard.append(carouselImage, carouselTitle);
-    carouselContainer.appendChild(carouselCard);
+    const card = createPostCard(item);
+    card.className = "carousel-card";
+    carouselContainer.appendChild(card);
   });
 
   // Initialize button logic
 
   initializeButtons(carouselItems.length);
+}
+
+export async function readPosts(page = 1, limit = 12) {
+  try {
+    const container = document.getElementById("posts-container");
+
+    skeletonLoader(limit, container); // Show skeleton loaders
+
+    const res = await api.post.readAll();
+    const posts = res.data;
+
+    posts.sort((a, b) => new Date(b.created) - new Date(a.created));
+
+    const startIndex = (page - 1) * limit;
+    const endIndex = startIndex + limit;
+    const paginatedPosts = posts.slice(startIndex, endIndex);
+
+    container.innerHTML = "";
+
+    paginatedPosts.forEach((post) => {
+      const card = createPostCard(post);
+      container.append(card);
+    });
+
+    // hideSkeletonLoader(); // Hide skeleton loaders once posts are loaded
+
+    updatePaginationControls(page, posts.length, limit);
+    animateOnScroll();
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    // hideSkeletonLoader(); // Ensure skeleton loaders are hidden even if there's an error
+  }
 }
 
 function initializeButtons(itemCount) {
