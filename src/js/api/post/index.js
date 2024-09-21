@@ -1,4 +1,3 @@
-import { hideLoader, showLoader } from "../../utilities/loader";
 import { API_BASE } from "../constants";
 import { headers } from "../headers";
 
@@ -14,7 +13,6 @@ export default class SocialAPI {
   // Generic method to handle API requests
   fetchData = async (endpoint, method = "GET", body = null) => {
     try {
-      showLoader();
       const res = await fetch(endpoint, {
         method,
         headers: headers(),
@@ -38,9 +36,6 @@ export default class SocialAPI {
     } catch (error) {
       console.error("Error in API request:", error);
       throw error;
-    } finally {
-      console.log("lets go");
-      hideLoader();
     }
   };
 
