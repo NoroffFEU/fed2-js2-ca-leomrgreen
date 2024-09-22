@@ -48,7 +48,7 @@ export default class SocialAPI {
     },
 
     readSinglePost: async (id) => {
-      const endpoint = `${this.apiPost}/${id}`;
+      const endpoint = `${this.apiPost}/${id}?_author=true`;
       const data = await this.fetchData(endpoint);
       console.log("Single post:", data);
       return data;
@@ -64,10 +64,10 @@ export default class SocialAPI {
     create: async ({ title, body, tags, media }) => {
       const requestBody = { title, body, tags, media };
       console.log("Creating post with data:", requestBody);
-      const endpoint = this.apiPost;
+      const endpoint = `${this.apiPost}`;
       const data = await this.fetchData(endpoint, "POST", requestBody);
-      console.log("id:", data.data.id);
       window.location.href = `/post/?id=${data.data.id}`;
+      console.log(endpoint);
       return data;
     },
 

@@ -1,6 +1,5 @@
 import { API_BASE } from "../constants";
 import { headers } from "../headers";
-import * as storage from "../../utilities/storage";
 import { hideLoader, showLoader } from "../../utilities/loader";
 
 export default class ProfileAPI {

@@ -1,5 +1,11 @@
 import { deletePost } from "../api/post/delete";
 import timeSince from "./getDate";
+import modal from "./modal";
+import * as storage from "./storage";
+
+const user = storage.load("user");
+
+const loggedInUser = user.name;
 
 // function that generates HTML (card) and adds different features based on the URL
 export function createPostCard(post) {
@@ -23,6 +29,27 @@ export function createPostCard(post) {
 
   // Create and append body and tags if on post page
   if (location.pathname === "/post/") {
+    const author = document.createElement("div");
+    author.className = "author-container";
+    const authorName = document.createElement("span");
+    authorName.innerHTML = `@${post.author.name}  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-check-fill" viewBox="0 0 16 16">
+    <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
+  </svg>
+  `;
+    const authorAvatar = document.createElement("img");
+    authorAvatar.src = post.author.avatar.url;
+    authorAvatar.alt = post.author.avatar.alt;
+
+    author.addEventListener("click", () => {
+      if (post.author.name === loggedInUser) {
+        window.location.href = "/profile/";
+      } else {
+        window.location.href = `/user/?id=${post.author.name}`;
+      }
+    });
+
+    author.append(authorAvatar, authorName);
+
     const body = document.createElement("p");
     body.textContent = post.body;
 
@@ -36,14 +63,21 @@ export function createPostCard(post) {
     });
 
     // Append body and tags after the image
-    card.append(image, title, body, tags, date);
+    card.append(author, image, title, body, tags, date);
   } else {
     // Append image, title, and date for other pages
     card.append(image, title, date);
   }
 
-  // Add event listener for homepage
+  // Add event listener for homepage and user page
   if (location.pathname === "/") {
+    card.addEventListener("click", () => {
+      window.location.href = `/post/?id=${post.id}`;
+    });
+    card.style.cursor = "pointer";
+  }
+
+  if (location.pathname === "/user/") {
     card.addEventListener("click", () => {
       window.location.href = `/post/?id=${post.id}`;
     });
@@ -78,4 +112,58 @@ export function createPostCard(post) {
   }
 
   return card;
+}
+
+export function createProfileCard(profile) {
+  const container = document.getElementById("profileContainer");
+  const avatarContainer = document.createElement("div");
+  avatarContainer.className = "avatar-container";
+  const numbers = document.createElement("div");
+  numbers.className = "info-container";
+
+  const infoContainer = document.createElement("div");
+  infoContainer.className = "extras";
+
+  const profileImage = document.createElement("img");
+  profileImage.src = profile.avatar.url;
+  profileImage.alt = profile.avatar.alt;
+
+  const profileName = document.createElement("span");
+  profileName.textContent = `@${profile.name}`;
+
+  const totalPosts = document.createElement("span");
+  totalPosts.textContent = `${profile._count.posts} posts`;
+
+  const followers = document.createElement("span");
+  followers.textContent = `${profile._count.followers} followers`;
+
+  const following = document.createElement("span");
+  following.textContent = `${profile._count.following} following`;
+
+  avatarContainer.append(profileImage, profileName);
+  numbers.append(totalPosts, followers, following);
+
+  // Kontrollera om vi är på profil-sidan och append editButton
+  if (location.pathname === "/profile/") {
+    const editButton = document.createElement("button");
+    editButton.className = "outline";
+    editButton.id = "editProfile";
+    editButton.textContent = "Edit profile";
+    editButton.addEventListener("click", () => {
+      modal();
+    });
+
+    // Append editButton efter numbers
+    infoContainer.append(numbers, editButton);
+  }
+
+  if (location.pathname === "/user/") {
+    const followBtn = document.createElement("button");
+    followBtn.className = "primary";
+    followBtn.textContent = "Follow +";
+
+    infoContainer.append(numbers, followBtn);
+  }
+
+  container.append(avatarContainer, infoContainer);
 }

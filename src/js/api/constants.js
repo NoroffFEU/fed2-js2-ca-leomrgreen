@@ -31,3 +31,5 @@ export const carouselContainer = document.getElementById("carousel-container");
 export const params = new URLSearchParams(window.location.search);
 
 export const postId = params.get("id");
+
+export const userId = params.get("id");

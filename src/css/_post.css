@@ -5,6 +5,30 @@
   margin: auto;
 }
 
+.author-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.author-container img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.author-container span {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.author-container span svg {
+  color: var(--primary);
+}
+
 h2 {
   font-weight: 400;
   color: var(--foreground);
