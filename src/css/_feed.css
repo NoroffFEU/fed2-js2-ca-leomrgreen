@@ -25,6 +25,20 @@ main {
   border-radius: var(--radius);
   padding: 1rem;
   box-shadow: 0px 2px 10px var(--shadow);
+  position: relative;
+}
+
+.comments {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.post-card .comments {
+  display: none;
 }
 
 h5 {
