@@ -1,11 +1,13 @@
 import animateOnScroll from "../../utilities/animateOnScroll";
 import { createPostCard } from "../../utilities/card";
-import timeSince from "../../utilities/getDate";
+// import checkFeed from "../../utilities/feed";
+// import timeSince from "../../utilities/getDate";
 import { updatePaginationControls } from "../../utilities/pagination";
 import skeletonLoader from "../../utilities/skeleton";
 import { nextButton, prevButton } from "../constants";
 import SocialAPI from "./index";
 let currentPage = 1;
+let forYou = true;
 
 const api = new SocialAPI();
 
@@ -34,7 +36,9 @@ export async function readPosts(page = 1, limit = 12) {
 
     skeletonLoader(limit, container); // Show skeleton loaders
 
-    const res = await api.post.readAll();
+    const res = forYou
+      ? await api.post.readAll()
+      : await api.post.readFollowPosts();
     const posts = res.data;
 
     posts.sort((a, b) => new Date(b.created) - new Date(a.created));
@@ -87,4 +91,31 @@ if (nextButton) {
   });
 }
 
-export async function readPostsByUser() {}
+// Toggle between "For You" and "Following" feeds
+export function toggleFeed() {
+  const foryouToggle = document.getElementById("foryou-toggle");
+  const followingToggle = document.getElementById("following-toggle");
+  if (followingToggle) {
+    followingToggle.style.cssText = "color: var(--muted-foreground)";
+  }
+
+  if (followingToggle) {
+    followingToggle.addEventListener("click", () => {
+      forYou = false; // Set forYou to false when "Following" is clicked
+      foryouToggle.style.cssText = "color: var(--muted-foreground)";
+      followingToggle.style.cssText = "color: var(--foreground)";
+
+      renderPosts(); // Reload posts with the updated feed
+    });
+  }
+  if (foryouToggle) {
+    foryouToggle.addEventListener("click", () => {
+      forYou = true; // Set forYou to true when "For You" is clicked
+      followingToggle.style.cssText = "color: var(--muted-foreground)";
+      foryouToggle.style.cssText = "color: var(--foreground)";
+
+      renderPosts(); // Reload posts with the updated feed
+    });
+  }
+}
+toggleFeed();

@@ -47,6 +47,13 @@ export default class SocialAPI {
       return data;
     },
 
+    readFollowPosts: async () => {
+      const endpoint = `${this.apiPost}/following`;
+      const data = await this.fetchData(endpoint);
+      console.log("People that you follow's posts: ", data);
+      return data;
+    },
+
     readSinglePost: async (id) => {
       const endpoint = `${this.apiPost}/${id}?_author=true&_comments=true&_reactions=true`;
       const data = await this.fetchData(endpoint);
