@@ -48,7 +48,7 @@ export default class SocialAPI {
     },
 
     readSinglePost: async (id) => {
-      const endpoint = `${this.apiPost}/${id}?_author=true`;
+      const endpoint = `${this.apiPost}/${id}?_author=true&_comments=true&_reactions=true`;
       const data = await this.fetchData(endpoint);
       console.log("Single post:", data);
       return data;

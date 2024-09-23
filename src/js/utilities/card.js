@@ -1,7 +1,10 @@
 import { deletePost } from "../api/post/delete";
 import timeSince from "./getDate";
+import ProfileAPI from "../api/profile";
 import modal from "./modal";
 import * as storage from "./storage";
+
+const api = new ProfileAPI();
 
 const user = storage.load("user");
 
@@ -159,8 +162,24 @@ export function createProfileCard(profile) {
 
   if (location.pathname === "/user/") {
     const followBtn = document.createElement("button");
-    followBtn.className = "primary";
-    followBtn.textContent = "Follow +";
+    const isFollowing = profile.followers.some(
+      (follower) => follower.name === loggedInUser
+    );
+    if (!isFollowing) {
+      followBtn.className = "primary";
+      followBtn.textContent = "Follow +";
+      followBtn.addEventListener("click", async () => {
+        await api.profile.follow(profile.name);
+        window.location.reload();
+      });
+    } else {
+      followBtn.className = "following";
+      followBtn.textContent = "Following";
+      followBtn.addEventListener("click", async () => {
+        await api.profile.unfollow(profile.name);
+        window.location.reload();
+      });
+    }
 
     infoContainer.append(numbers, followBtn);
   }

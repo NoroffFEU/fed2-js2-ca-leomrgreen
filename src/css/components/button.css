@@ -26,6 +26,15 @@
   align-items: center;
 }
 
+.following {
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  outline: none;
+  border-radius: var(--radius);
+  color: var(--foreground);
+  height: 2.5rem;
+}
+
 .ghost {
   background-color: transparent;
   border: none;

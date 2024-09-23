@@ -38,7 +38,7 @@ export default class ProfileAPI {
 
   profile = {
     read: async (username) => {
-      const endpoint = `${this.apiProfile}/${username}`;
+      const endpoint = `${this.apiProfile}/${username}?_following=true&_followers=true`;
       const data = await this.fetchData(endpoint);
       console.log("User received: ", data);
       return data;
@@ -55,6 +55,21 @@ export default class ProfileAPI {
       const endpoint = `${this.apiProfile}/${username}/posts`;
       const data = await this.fetchData(endpoint);
       console.log("Profile posts received: ", data);
+      return data;
+    },
+    // Follow a user
+    follow: async (username) => {
+      const endpoint = `${this.apiProfile}/${username}/follow`;
+      const data = await this.fetchData(endpoint, "PUT");
+      console.log(`Started following ${username}: `, data);
+      return data;
+    },
+
+    // Unfollow a user
+    unfollow: async (username) => {
+      const endpoint = `${this.apiProfile}/${username}/unfollow`;
+      const data = await this.fetchData(endpoint, "PUT");
+      console.log(`Stopped following ${username}: `, data);
       return data;
     },
   };
