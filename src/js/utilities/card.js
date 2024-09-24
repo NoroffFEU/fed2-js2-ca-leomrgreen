@@ -4,6 +4,7 @@ import ProfileAPI from "../api/profile";
 import modal from "./modal";
 import * as storage from "./storage";
 import SocialAPI from "../api/post";
+import { viewUsers } from "./popUp";
 
 const api = new ProfileAPI();
 const socialApi = new SocialAPI();
@@ -195,6 +196,7 @@ export function createProfileCard(profile) {
   avatarContainer.className = "avatar-container";
   const numbers = document.createElement("div");
   numbers.className = "info-container";
+  numbers.id = "infoContainer";
 
   const infoContainer = document.createElement("div");
   infoContainer.className = "extras";
@@ -210,10 +212,18 @@ export function createProfileCard(profile) {
   totalPosts.textContent = `${profile._count.posts} posts`;
 
   const followers = document.createElement("span");
+  followers.className = "cursor"; // styling
   followers.textContent = `${profile._count.followers} followers`;
+  followers.addEventListener("click", () => {
+    viewUsers(profile.followers);
+  });
 
   const following = document.createElement("span");
+  following.className = "cursor"; // styling
   following.textContent = `${profile._count.following} following`;
+  following.addEventListener("click", () => {
+    viewUsers(profile.following);
+  });
 
   avatarContainer.append(profileImage, profileName);
   numbers.append(totalPosts, followers, following);

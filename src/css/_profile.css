@@ -33,6 +33,10 @@
   margin-bottom: 1rem;
 }
 
+.cursor {
+  cursor: pointer;
+}
+
 .extras {
   display: flex;
   flex-direction: column;

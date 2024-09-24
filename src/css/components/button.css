@@ -77,6 +77,23 @@ button {
   transition: 200ms ease;
 }
 
+.close-btn {
+  background-color: red;
+  position: absolute;
+  top: 0rem;
+  right: 0;
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  outline: none;
+  border-radius: var(--radius);
+  color: var(--foreground);
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .destructive {
   background-color: var(--destructive);
   border: none;
