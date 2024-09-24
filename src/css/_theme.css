@@ -48,19 +48,19 @@
   --shadow: rgba(68, 68, 68, 0.438);
 }
 .dark .bi-brightness-high {
-  display: block;
+  display: none;
 }
 
 .dark .bi-moon-stars {
-  display: none;
+  display: block;
 }
 
 .bi-brightness-high {
-  display: none;
+  display: block;
 }
 
 .bi-moon-stars {
-  display: block;
+  display: none;
 }
 
 body {
