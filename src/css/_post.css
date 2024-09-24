@@ -55,3 +55,19 @@ h2 {
   justify-content: start;
   text-align: start;
 }
+
+.like-btn {
+  position: absolute;
+  bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  right: 4rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.like-btn svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}

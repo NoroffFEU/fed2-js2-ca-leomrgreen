@@ -99,5 +99,13 @@ export default class SocialAPI {
       console.log("Published comment", data);
       return data;
     },
+
+    like: async (id, symbol) => {
+      const endpoint = `${this.apiPost}/${id}/react/${symbol}`;
+      const body = id;
+      const data = await this.fetchData(endpoint, "PUT", body);
+      window.location.reload();
+      return data;
+    },
   };
 }

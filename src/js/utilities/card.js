@@ -3,8 +3,10 @@ import timeSince from "./getDate";
 import ProfileAPI from "../api/profile";
 import modal from "./modal";
 import * as storage from "./storage";
+import SocialAPI from "../api/post";
 
 const api = new ProfileAPI();
+const socialApi = new SocialAPI();
 
 const user = storage.load("user");
 
@@ -51,6 +53,32 @@ export function createPostCard(post) {
       }
     });
 
+    const likeButton = document.createElement("span");
+
+    likeButton.className = "like-btn";
+    likeButton.addEventListener("click", async () => {
+      await socialApi.post.like(post.id, "👍");
+    });
+
+    // check if user already has liked the post, and if true, change the svg to a heart-fill
+    const userHasReacted = post.reactions.some(
+      (reaction) =>
+        Array.isArray(reaction.reactors) &&
+        reaction.reactors.includes(loggedInUser)
+    );
+
+    if (userHasReacted) {
+      likeButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+      </svg> ${post._count.reactions} `;
+    } else {
+      likeButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+      <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+      </svg> ${post._count.reactions} `;
+    }
+
+    console.log(post.reactions);
+
     author.append(authorAvatar, authorName);
 
     const body = document.createElement("p");
@@ -90,6 +118,14 @@ export function createPostCard(post) {
         const commentHeading = document.createElement("span");
         commentHeading.className = "comment-heading";
 
+        commentHeading.addEventListener("click", () => {
+          if (comment.author.name != loggedInUser) {
+            window.location.href = `/user/?id=${comment.author.name}`;
+          } else {
+            window.location.href = "/profile/";
+          }
+        });
+
         commentHeading.append(commentAuthor, commentName, commentDate);
 
         commentSpan.append(commentHeading, commentBody);
@@ -98,7 +134,7 @@ export function createPostCard(post) {
     }
 
     // Append body and tags after the image
-    card.append(author, image, title, body, tags, date);
+    card.append(author, image, title, body, tags, date, likeButton);
   } else {
     // Append image, title, and date for other pages
     card.append(image, title, date);
@@ -119,6 +155,7 @@ export function createPostCard(post) {
     comments.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-fill" viewBox="0 0 16 16">
     <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9 9 0 0 0 8 15"/>
   </svg> <span> ${post.comments.length} </span>`;
+
     card.append(comments);
   }
 

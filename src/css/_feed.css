@@ -37,6 +37,12 @@ main {
   bottom: 1rem;
   cursor: pointer;
   right: 1rem;
+  font-size: 1rem;
+}
+
+.comments svg {
+  width: 1.2rem;
+  height: 1.2rem;
 }
 
 h5 {
