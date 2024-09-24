@@ -1,3 +1,9 @@
+import * as storage from "./storage";
+
+const user = storage.load("user");
+
+const loggedInUser = user.name;
+
 export function viewUsers(user) {
   const popUp = document.createElement("div");
   const container = document.getElementById("infoContainer");
@@ -11,7 +17,11 @@ export function viewUsers(user) {
     const username = document.createElement("span");
     username.textContent = `@${u.name}`;
     username.addEventListener("click", () => {
-      window.location.href = `/user/?id=${u.name}`;
+      if (u.name != loggedInUser) {
+        window.location.href = `/user/?id=${u.name}`;
+      } else {
+        window.location.href = "/profile/";
+      }
     });
     flexBox.append(avatar, username);
     popUp.append(flexBox);
