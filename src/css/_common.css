@@ -7,6 +7,10 @@
   margin-inline: auto;
 }
 
+.welcome {
+  padding: 0rem;
+}
+
 .auth-main h2,
 .auth-main span {
   color: var(--muted-foreground);

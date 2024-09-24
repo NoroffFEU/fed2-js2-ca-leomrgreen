@@ -70,3 +70,15 @@ input:disabled {
   grid-template-columns: 90% 1fr;
   padding: 0 1rem 0 0;
 }
+
+.left-arrow {
+  position: absolute;
+  left: 2rem;
+  top: 7rem;
+}
+
+.left-arrow svg {
+  width: 4rem;
+  height: 4rem;
+  color: var(--primary);
+}
