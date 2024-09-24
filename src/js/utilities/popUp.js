@@ -1,6 +1,9 @@
+import { authGuard } from "./authGuard";
 import * as storage from "./storage";
 
 const user = storage.load("user");
+
+authGuard();
 
 const loggedInUser = user.name;
 

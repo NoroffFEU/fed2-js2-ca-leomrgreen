@@ -6,7 +6,7 @@ export default function onLogout() {
     storage.remove("token");
     storage.remove("user");
     alert("signed out!");
-    window.location.href = "/auth/";
+    window.location.href = "/";
   } catch {
     alert("could not sign out");
   }

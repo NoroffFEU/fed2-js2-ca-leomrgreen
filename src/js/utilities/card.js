@@ -5,6 +5,9 @@ import modal from "./modal";
 import * as storage from "./storage";
 import SocialAPI from "../api/post";
 import { viewUsers } from "./popUp";
+import { authGuard } from "./authGuard";
+
+authGuard();
 
 const api = new ProfileAPI();
 const socialApi = new SocialAPI();

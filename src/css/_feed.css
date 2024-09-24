@@ -64,6 +64,11 @@ h5 {
   object-fit: cover;
 }
 
+.post-card h3 {
+  max-width: 20ch;
+  overflow-wrap: break-word;
+}
+
 #pagination-controls {
   position: relative;
   align-items: center;
