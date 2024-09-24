@@ -26,6 +26,7 @@ main {
   padding: 1rem;
   box-shadow: 0px 2px 10px var(--shadow);
   position: relative;
+  color: var(--muted-foreground);
 }
 
 .comments {
