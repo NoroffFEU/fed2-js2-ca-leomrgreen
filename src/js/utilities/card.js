@@ -65,6 +65,38 @@ export function createPostCard(post) {
       tags.appendChild(li);
     });
 
+    const commentSection = document.getElementById("comment-container");
+
+    if (commentSection) {
+      post.comments.sort((a, b) => new Date(a.created) - new Date(b.created));
+
+      post.comments.forEach((comment) => {
+        const commentSpan = document.createElement("span");
+        commentSpan.className = "comment";
+        const commentAuthor = document.createElement("img");
+        commentAuthor.src = comment.author.avatar.url;
+        commentAuthor.alt = comment.author.avatar.alt;
+
+        const commentName = document.createElement("span");
+        commentName.textContent = `@${comment.author.name}`;
+        commentName.className = "comment-name";
+
+        const commentBody = document.createElement("p");
+        commentBody.textContent = comment.body;
+
+        const commentDate = document.createElement("span");
+        commentDate.textContent = timeSince(comment.created);
+
+        const commentHeading = document.createElement("span");
+        commentHeading.className = "comment-heading";
+
+        commentHeading.append(commentAuthor, commentName, commentDate);
+
+        commentSpan.append(commentHeading, commentBody);
+        commentSection.appendChild(commentSpan);
+      });
+    }
+
     // Append body and tags after the image
     card.append(author, image, title, body, tags, date);
   } else {
@@ -73,24 +105,21 @@ export function createPostCard(post) {
   }
 
   // Add event listener for homepage and user page
-  if (location.pathname === "/") {
+  if (location.pathname === "/" || location.pathname === "/user/") {
     card.addEventListener("click", () => {
       window.location.href = `/post/?id=${post.id}`;
     });
     card.style.cursor = "pointer";
+  }
+
+  if (location.pathname === "/" || location.pathname === "/post/") {
     const comments = document.createElement("span");
     comments.className = "comments";
+    comments.id = "commentBtn";
     comments.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-fill" viewBox="0 0 16 16">
     <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9 9 0 0 0 8 15"/>
   </svg> <span> ${post.comments.length} </span>`;
     card.append(comments);
-  }
-
-  if (location.pathname === "/user/") {
-    card.addEventListener("click", () => {
-      window.location.href = `/post/?id=${post.id}`;
-    });
-    card.style.cursor = "pointer";
   }
 
   // Add delete and edit buttons if on profile page

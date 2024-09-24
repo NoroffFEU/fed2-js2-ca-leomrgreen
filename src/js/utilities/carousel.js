@@ -11,7 +11,7 @@ export async function carousel() {
   const data = res.data;
   // Sort by most reactions and take the top 9
   const carouselItems = data
-    .sort((a, b) => b._count.reactions - a._count.reactions)
+    .sort((a, b) => b._count.comments - a._count.comments)
     .slice(0, 9);
 
   console.log(carouselItems);
@@ -50,13 +50,10 @@ export async function readPosts(page = 1, limit = 12) {
       container.append(card);
     });
 
-    // hideSkeletonLoader(); // Hide skeleton loaders once posts are loaded
-
     updatePaginationControls(page, posts.length, limit);
     animateOnScroll();
   } catch (error) {
     console.error("Error fetching posts:", error);
-    // hideSkeletonLoader(); // Ensure skeleton loaders are hidden even if there's an error
   }
 }
 

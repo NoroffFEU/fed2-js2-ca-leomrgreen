@@ -57,10 +57,16 @@ input:disabled {
   cursor: not-allowed;
 }
 
-.update-form {
+.modal-form {
   background-color: var(--card);
   width: min(30rem, 100%);
   padding: 1rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
+}
+
+.comment-flex {
+  display: grid;
+  grid-template-columns: 90% 1fr;
+  padding: 0 1rem 0 0;
 }

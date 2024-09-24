@@ -34,11 +34,8 @@ main {
   gap: 0.2rem;
   position: absolute;
   bottom: 1rem;
+  cursor: pointer;
   right: 1rem;
-}
-
-.post-card .comments {
-  display: none;
 }
 
 h5 {

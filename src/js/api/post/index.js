@@ -48,7 +48,7 @@ export default class SocialAPI {
     },
 
     readFollowPosts: async () => {
-      const endpoint = `${this.apiPost}/following`;
+      const endpoint = `${this.apiPost}/following/?_author=true&_comments=true&_reactions=true`;
       const data = await this.fetchData(endpoint);
       console.log("People that you follow's posts: ", data);
       return data;
@@ -89,6 +89,14 @@ export default class SocialAPI {
       const endpoint = `${this.apiPost}/${id}`;
       const data = await this.fetchData(endpoint, "PUT", requestBody);
       console.log("Post updated");
+      return data;
+    },
+
+    comment: async (id, body) => {
+      const endpoint = `${this.apiPost}/${id}/comment`;
+      const requestBody = body;
+      const data = await this.fetchData(endpoint, "POST", requestBody);
+      console.log("Published comment", data);
       return data;
     },
   };

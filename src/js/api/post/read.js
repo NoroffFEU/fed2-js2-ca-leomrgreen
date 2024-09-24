@@ -1,7 +1,6 @@
 import animateOnScroll from "../../utilities/animateOnScroll";
 import { createPostCard } from "../../utilities/card";
-// import checkFeed from "../../utilities/feed";
-// import timeSince from "../../utilities/getDate";
+import modal from "../../utilities/modal";
 import { updatePaginationControls } from "../../utilities/pagination";
 import skeletonLoader from "../../utilities/skeleton";
 import { nextButton, prevButton } from "../constants";
@@ -24,6 +23,14 @@ export async function readPost(id) {
     // Create post card and append it to container
     const card = createPostCard(post);
     container.appendChild(card);
+
+    const commentsBtn = document.getElementById("commentBtn");
+    if (commentsBtn) {
+      commentsBtn.addEventListener("click", () => {
+        modal();
+      });
+    }
+
     animateOnScroll();
   } catch (error) {
     console.error(error);

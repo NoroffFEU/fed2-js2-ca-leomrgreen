@@ -1,7 +1,7 @@
 export default function modal() {
   const modal = document.querySelector(".modal");
   const closeBtn = document.getElementById("closeBtn");
-  const form = document.querySelector(".update-form");
+  const form = document.querySelector(".modal-form");
 
   if (modal) {
     if (modal.classList.toggle("open")) {
