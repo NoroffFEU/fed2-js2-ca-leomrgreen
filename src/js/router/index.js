@@ -1,16 +1,15 @@
 import setThemeListener from "../theme/index.js";
 import setLogoutListener from "../ui/global/logout.js";
-import {
-  setDropDownListener,
-  setSearchBarListener,
-  toggleSearchBar,
-} from "../utilities/nav";
+import { onSearch } from "../ui/profile/search.js";
+import { setDropDownListener, setSearchBarListener } from "../utilities/nav";
+const form = document.forms.search;
 
 export default async function router(pathname = window.location.pathname) {
   setLogoutListener();
   setSearchBarListener();
   setThemeListener();
   setDropDownListener();
+  form.addEventListener("submit", onSearch);
 
   switch (pathname) {
     case "/":

@@ -1,6 +1,5 @@
 import * as storage from "../../utilities/storage";
 import ProfileAPI from "../../api/profile/index";
-import updatePlaceholder from "../../utilities/custom-placeholder";
 
 const api = new ProfileAPI();
 const user = storage.load("user");

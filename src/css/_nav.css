@@ -15,6 +15,7 @@ nav {
   height: 4rem;
   margin-top: 1rem;
   z-index: 999;
+  box-shadow: 0px 2px 10px var(--shadow);
 }
 
 nav img {
