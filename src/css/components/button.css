@@ -82,6 +82,28 @@ button {
   margin-left: auto;
 }
 
+.search-btn {
+  background-color: var(--card);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--muted-foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  height: 2.5rem;
+  padding: 0 1rem;
+}
+
+.search-btn:hover {
+  background-color: var(--muted);
+}
+
+.search-btn svg {
+  display: flex;
+  justify-content: start;
+}
+
 .close-btn {
   background-color: red;
   position: absolute;
@@ -176,5 +198,13 @@ button {
   #signOutBtn {
     width: 2.5rem;
     padding: 0;
+  }
+
+  .search-btn span {
+    display: none;
+  }
+
+  .search-btn {
+    padding: 0 0.7rem;
   }
 }

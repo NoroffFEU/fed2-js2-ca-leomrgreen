@@ -1,9 +1,14 @@
 import setThemeListener from "../theme/index.js";
 import setLogoutListener from "../ui/global/logout.js";
-import setDropDownListener from "../utilities/nav";
+import {
+  setDropDownListener,
+  setSearchBarListener,
+  toggleSearchBar,
+} from "../utilities/nav";
 
 export default async function router(pathname = window.location.pathname) {
   setLogoutListener();
+  setSearchBarListener();
   setThemeListener();
   setDropDownListener();
 

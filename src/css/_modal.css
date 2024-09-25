@@ -1,5 +1,6 @@
 .modal,
-.popUp {
+.popUp,
+.search-dialog {
   display: none;
   z-index: 1000;
   position: fixed;
@@ -9,7 +10,8 @@
 }
 
 .modal.open,
-.popUp.open {
+.popUp.open,
+.search-dialog.open {
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,4 +1,4 @@
-export default function setDropDownListener() {
+export function setDropDownListener() {
   const profileIcon = document.getElementById("profile");
   const dropdown = document.getElementById("dropdownMenu");
 
@@ -19,5 +19,34 @@ export default function setDropDownListener() {
     });
   } else {
     return null;
+  }
+}
+
+export function toggleSearchBar() {
+  const dialog = document.querySelector(".search-dialog");
+  const form = document.querySelector(".search-form");
+
+  if (dialog) {
+    if (dialog.classList.toggle("open")) {
+      // Modal is opened
+      document.body.style.overflow = "hidden"; // Disable scrolling
+    }
+
+    // Close modal when clicking outside the form
+    dialog.addEventListener("click", (event) => {
+      if (!form.contains(event.target)) {
+        dialog.classList.remove("open");
+        document.body.style.overflow = ""; // Re-enable scrolling
+      }
+    });
+  }
+}
+
+export function setSearchBarListener() {
+  const searchTrigger = document.getElementById("search-trigger");
+  if (searchTrigger) {
+    searchTrigger.addEventListener("click", () => {
+      toggleSearchBar();
+    });
   }
 }

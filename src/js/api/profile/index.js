@@ -57,7 +57,7 @@ export default class ProfileAPI {
       console.log("Profile posts received: ", data);
       return data;
     },
-    // Follow a user
+
     follow: async (username) => {
       const endpoint = `${this.apiProfile}/${username}/follow`;
       const data = await this.fetchData(endpoint, "PUT");
@@ -65,11 +65,17 @@ export default class ProfileAPI {
       return data;
     },
 
-    // Unfollow a user
     unfollow: async (username) => {
       const endpoint = `${this.apiProfile}/${username}/unfollow`;
       const data = await this.fetchData(endpoint, "PUT");
       console.log(`Stopped following ${username}: `, data);
+      return data;
+    },
+
+    search: async (query) => {
+      const endpoint = `${this.apiProfile}/search?q=${query}`;
+      const data = await this.fetchData(endpoint);
+      console.log("your result:", data);
       return data;
     },
   };
