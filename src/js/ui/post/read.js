@@ -3,8 +3,8 @@ import { createPostCard } from "../../utilities/card";
 import modal from "../../utilities/modal";
 import { updatePaginationControls } from "../../utilities/pagination";
 import skeletonLoader from "../../utilities/skeleton";
-import { nextButton, prevButton } from "../constants";
-import SocialAPI from "./index";
+import { nextButton, prevButton } from "../../api/constants";
+import SocialAPI from "../../api/post/index";
 let currentPage = 1;
 let forYou = true;
 

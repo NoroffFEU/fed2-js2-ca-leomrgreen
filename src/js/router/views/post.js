@@ -1,5 +1,5 @@
 import { postId } from "../../api/constants";
-import { readPost } from "../../api/post/read";
+import { readPost } from "../../ui/post/read";
 import { onComment } from "../../ui/post/comment";
 import { authGuard } from "../../utilities/authGuard";
 

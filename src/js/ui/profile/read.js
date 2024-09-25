@@ -1,8 +1,8 @@
 import * as storage from "../../utilities/storage";
-import ProfileAPI from ".";
+import ProfileAPI from "../../api/profile";
 import { createPostCard, createProfileCard } from "../../utilities/card";
 import animateOnScroll from "../../utilities/animateOnScroll";
-import { userId } from "../constants";
+import { userId } from "../../api/constants";
 
 const api = new ProfileAPI();
 const user = storage.load("user");

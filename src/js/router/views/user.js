@@ -1,4 +1,4 @@
-import { readProfile, readProfilePosts } from "../../api/profile/read";
+import { readProfile, readProfilePosts } from "../../ui/profile/read";
 
 console.log("user page");
 readProfile();
