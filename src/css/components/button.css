@@ -80,10 +80,10 @@ button {
 .close-btn {
   background-color: red;
   position: absolute;
-  top: 0rem;
-  right: 0;
+  top: 0.1rem;
+  right: 0.1rem;
   background-color: var(--background);
-  border: 1px solid var(--border);
+  border: none;
   outline: none;
   border-radius: var(--radius);
   color: var(--foreground);

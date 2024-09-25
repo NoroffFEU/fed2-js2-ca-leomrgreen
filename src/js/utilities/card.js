@@ -4,8 +4,8 @@ import ProfileAPI from "../api/profile";
 import modal from "./modal";
 import * as storage from "./storage";
 import SocialAPI from "../api/post";
-import { viewUsers } from "./popUp";
 import { authGuard } from "./authGuard";
+import popUp from "./popUp";
 
 authGuard();
 
@@ -218,14 +218,14 @@ export function createProfileCard(profile) {
   followers.className = "cursor"; // styling
   followers.textContent = `${profile._count.followers} followers`;
   followers.addEventListener("click", () => {
-    viewUsers(profile.followers);
+    popUp(profile.followers);
   });
 
   const following = document.createElement("span");
   following.className = "cursor"; // styling
   following.textContent = `${profile._count.following} following`;
   following.addEventListener("click", () => {
-    viewUsers(profile.following);
+    popUp(profile.following);
   });
 
   avatarContainer.append(profileImage, profileName);
