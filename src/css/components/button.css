@@ -77,6 +77,11 @@ button {
   transition: 200ms ease;
 }
 
+.flex-box button {
+  padding: 0 0.5rem;
+  margin-left: auto;
+}
+
 .close-btn {
   background-color: red;
   position: absolute;
