@@ -8,20 +8,23 @@ export default function setThemeListener() {
   // Check if user already has a theme set in their local storage
   let savedTheme = storage.load("theme");
 
-  // if no theme is found in local storage, then set "light" as default
+  // If no theme is found in local storage, use system preference
   if (!savedTheme) {
-    savedTheme = "light";
+    const systemPrefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    savedTheme = systemPrefersDark ? "dark" : "light"; // Set based on system preference
     storage.save("theme", savedTheme);
   }
 
   // Apply the theme depending on what value is in local storage
   if (savedTheme === "dark") {
-    htmlElement.classList.add("dark"); // Apply dark if user switch to dark mode
+    htmlElement.classList.add("dark"); // Apply dark if user prefers dark mode
   } else {
-    htmlElement.classList.remove("dark"); // remove dark class if the value dark is not in storage
+    htmlElement.classList.remove("dark"); // Remove dark class if it's not dark
   }
 
-  // listen for our toggleTheme function
+  // Listen for our toggleTheme function
   if (themeBtn) {
     themeBtn.addEventListener("click", toggleTheme);
   }
