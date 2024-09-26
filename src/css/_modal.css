@@ -75,6 +75,10 @@
   scrollbar-width: thin;
 }
 
+.user-dropdown:nth-child(2) {
+  display: none;
+}
+
 .avatar {
   width: 1.5rem;
   height: 1.5rem;
