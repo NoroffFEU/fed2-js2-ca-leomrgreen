@@ -2,14 +2,22 @@ import setThemeListener from "../theme/index.js";
 import setLogoutListener from "../ui/global/logout.js";
 import { onSearch } from "../ui/profile/search.js";
 import { setDropDownListener, setSearchBarListener } from "../utilities/nav";
-const form = document.forms.search;
 
 export default async function router(pathname = window.location.pathname) {
   setLogoutListener();
-  setSearchBarListener();
   setThemeListener();
   setDropDownListener();
-  form.addEventListener("submit", onSearch);
+
+  // Array of un-authenticated routes
+  const authRoutes = ["/auth/", "/auth/login/", "/auth/register/"];
+
+  // Make sure to only apply searchbar eventlistener's if user has managed to log in
+  if (!authRoutes.includes(pathname)) {
+    const form = document.forms.search;
+
+    setSearchBarListener();
+    form.addEventListener("submit", onSearch);
+  }
 
   switch (pathname) {
     case "/":
@@ -43,3 +51,4 @@ export default async function router(pathname = window.location.pathname) {
       await import("./views/notFound.js");
   }
 }
+``;

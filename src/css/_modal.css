@@ -32,12 +32,13 @@
   padding: 0.2rem;
   border-radius: var(--radius);
   padding: 1rem;
-  scrollbar-width: thin;
+  border: 2px solid var(--border);
 }
 
 .search-container {
   max-height: 20rem;
   overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 .search-res {
