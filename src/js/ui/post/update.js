@@ -30,7 +30,7 @@ export async function OnUpdatePost(e) {
     body: formData.get("body"),
     tags: formData
       .get("tags")
-      .split(/[\s,]+/)
+      .split(/[\s,]+/) // regex for " " ","
       .map((tag) => tag.trim())
       .filter((tag) => tag),
     media: formData.get("media-url")

@@ -10,7 +10,7 @@ export async function onCreatePost(e) {
     body: formData.get("body"),
     tags: formData
       .get("tags")
-      .split(/[\s,]+/)
+      .split(/[\s,]+/) // regex for " " ","
       .map((tag) => tag.trim())
       .filter((tag) => tag),
     media: formData.get("media-url")
@@ -18,7 +18,7 @@ export async function onCreatePost(e) {
           url: formData.get("media-url"),
           alt: formData.get("media-alt"),
         }
-      : null,
+      : null, // ensures that create post is successful even though user does not provide any media property
   };
 
   try {

@@ -21,6 +21,8 @@ export async function readProfilePosts() {
   const profilePosts = res.data;
   const container = document.getElementById("profile-post-container");
   const noPostContainer = document.getElementById("noPostContainer");
+
+  // if the profile does not contain any posts, then rely on HTML below
   if (profilePosts.length === 0) {
     const noPostsInfo = document.createElement("div");
     noPostsInfo.className = "no-post";

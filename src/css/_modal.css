@@ -24,6 +24,7 @@
   padding: 0.5rem;
   border-radius: var(--radius);
   transition: 200ms ease;
+  cursor: pointer;
 }
 
 .search-form {

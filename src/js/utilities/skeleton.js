@@ -5,7 +5,7 @@ export default function skeletonLoader(count, container) {
   // Create skeleton cards based on count
   for (let i = 0; i < count; i++) {
     const skeletonCard = document.createElement("div");
-    skeletonCard.classList.add("skeleton-card"); // Add your own skeleton styling class
+    skeletonCard.classList.add("skeleton-card");
 
     container.appendChild(skeletonCard);
   }

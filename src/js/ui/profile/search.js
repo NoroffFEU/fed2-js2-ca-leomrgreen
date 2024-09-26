@@ -5,7 +5,7 @@ var loggedInUser;
 
 if (localStorage.token) {
   const username = storage.load("user");
-  loggedInUser = username.name;
+  loggedInUser = username.name; // gives the loggedInUser a global scope in order for it to work with logic in search function (line 42)
 }
 
 const api = new ProfileAPI();
@@ -31,12 +31,14 @@ export async function onSearch(e) {
     });
   }
 
+  // this ensures we don't get en error if trying to set a classname to a not existing element
   searchContainer ? (searchContainer.className = "search-container") : null;
-  console.log(res);
   res.data.forEach((user) => {
     const row = document.createElement("div");
     row.className = "row";
     row.addEventListener("click", () => {
+      // check if user clicks on themselves or another user, if the id matches the id (username)
+      // in local storage, then go to /profile instead of /user
       if (user.name === loggedInUser) {
         window.location.href = "/profile/";
       } else {
@@ -44,7 +46,7 @@ export async function onSearch(e) {
       }
     });
     const username = document.createElement("div");
-    username.textContent = user.name;
+    username.textContent = `@${user.name}`;
     username.className = "search-res";
 
     const avatar = document.createElement("img");

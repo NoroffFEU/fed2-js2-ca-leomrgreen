@@ -113,4 +113,8 @@
   #profile-post-container {
     grid-template-columns: 1fr;
   }
+
+  #profileContainer {
+    padding: 0.4rem;
+  }
 }
