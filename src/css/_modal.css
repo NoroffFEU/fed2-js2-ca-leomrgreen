@@ -17,8 +17,36 @@
   align-items: center;
 }
 
+.row {
+  display: flex;
+  align-items: center;
+  margin: 0.4rem;
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  transition: 200ms ease;
+}
+
 .search-form {
   width: min(30rem, 100%);
+  background-color: var(--card);
+  padding: 0.2rem;
+  border-radius: var(--radius);
+  padding: 1rem;
+  scrollbar-width: thin;
+}
+
+.search-container {
+  max-height: 20rem;
+  overflow-y: auto;
+}
+
+.search-res {
+  padding: 1rem;
+  border-radius: var(--radius);
+}
+
+.row:hover {
+  background-color: var(--muted);
 }
 
 .search-group {

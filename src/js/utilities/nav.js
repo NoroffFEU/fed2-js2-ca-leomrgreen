@@ -37,6 +37,14 @@ export function toggleSearchBar() {
       if (!form.contains(event.target)) {
         dialog.classList.remove("open");
         document.body.style.overflow = ""; // Re-enable scrolling
+
+        // Fetch and remove search results after dialog is closed
+        const searchContainer = document.querySelectorAll(".search-container"); // Fetch again after close
+        const searchBar = document.querySelector(".search-value");
+        searchContainer.forEach((res) => {
+          res.remove();
+        });
+        searchBar.value = "";
       }
     });
   }

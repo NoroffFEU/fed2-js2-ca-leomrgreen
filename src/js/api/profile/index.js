@@ -1,7 +1,6 @@
 import { API_BASE } from "../constants";
 import { headers } from "../headers";
 import { hideLoader, showLoader } from "../../utilities/loader";
-import { displaySearchResult } from "../../ui/profile/search";
 
 export default class ProfileAPI {
   apiBase = "";
@@ -77,7 +76,6 @@ export default class ProfileAPI {
       const endpoint = `${this.apiProfile}/search?q=${query}`;
       const data = await this.fetchData(endpoint);
       console.log("your result:", data);
-      displaySearchResult(data.data);
       return data;
     },
   };

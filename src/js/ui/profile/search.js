@@ -1,5 +1,6 @@
 import ProfileAPI from "../../api/profile";
 const api = new ProfileAPI();
+const form = document.querySelector(".search-form");
 
 export async function onSearch(e) {
   e.preventDefault();
@@ -10,7 +11,25 @@ export async function onSearch(e) {
     return;
   }
 
-  await api.profile.search(query);
-}
+  const res = await api.profile.search(query);
+  const searchContainer = document.getElementById("search-container");
+  searchContainer ? (searchContainer.className = "search-container") : null;
+  console.log(res);
+  res.data.forEach((user) => {
+    const row = document.createElement("div");
+    row.className = "row";
+    const username = document.createElement("div");
+    username.textContent = user.name;
+    username.className = "search-res";
 
-export function displaySearchResult(result) {}
+    const avatar = document.createElement("img");
+    avatar.src = user.avatar.url;
+    avatar.alt = user.avatar.alt;
+    avatar.className = "avatar";
+    row.append(avatar, username);
+    if (res.data) {
+      searchContainer.append(row);
+    }
+    form.append(searchContainer);
+  });
+}
