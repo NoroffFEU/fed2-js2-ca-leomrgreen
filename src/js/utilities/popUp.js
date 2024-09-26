@@ -51,9 +51,6 @@ export default async function popUp(users) {
         (follower) => follower.name === user.name // Change this to check against the current user
       );
 
-      console.log("Following users:", myProfile.data.following);
-      console.log(`Is ${loggedInUser} following ${user.name}? ${isFollowing}`);
-
       if (!isFollowing) {
         followBtn.className = "primary";
         followBtn.textContent = "Follow +";

@@ -88,8 +88,6 @@ export function createPostCard(post) {
       likeButton.innerHTML = `${likeSVG}${post._count.reactions} `;
     }
 
-    console.log(post.reactions);
-
     author.append(authorAvatar, authorName);
 
     const body = document.createElement("p");

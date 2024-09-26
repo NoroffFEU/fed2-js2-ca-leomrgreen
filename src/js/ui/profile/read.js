@@ -12,7 +12,6 @@ const username = location.pathname === "/profile/" ? user.name : userId;
 export async function readProfile() {
   const res = await api.profile.read(username);
   const profile = res.data;
-  console.log(profile);
   createProfileCard(profile);
 }
 

@@ -16,7 +16,6 @@ export async function readPost(id) {
     skeletonLoader(1, container);
     const res = await api.post.readSinglePost(id);
     const post = res.data;
-    console.log(post);
 
     container.innerHTML = ""; // Clear existing content
 
@@ -93,7 +92,6 @@ if (prevButton) {
 if (nextButton) {
   nextButton.addEventListener("click", () => {
     currentPage++;
-    console.log(currentPage);
     renderPosts();
   });
 }

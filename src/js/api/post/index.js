@@ -19,7 +19,7 @@ export default class SocialAPI {
         body: body ? JSON.stringify(body) : undefined,
       });
 
-      // Check for 204 No Content
+      // Check for 204 No Content to make sure we don't get an error when deleting a post
       if (res.ok) {
         if (res.status === 204) {
           return; // No content to return
@@ -43,38 +43,32 @@ export default class SocialAPI {
     readAll: async () => {
       const endpoint = `${this.apiPost}/?_author=true&_comments=true&_reactions=true`;
       const data = await this.fetchData(endpoint);
-      console.log("All posts:", data);
       return data;
     },
 
     readFollowPosts: async () => {
       const endpoint = `${this.apiPost}/following/?_author=true&_comments=true&_reactions=true`;
       const data = await this.fetchData(endpoint);
-      console.log("People that you follow's posts: ", data);
       return data;
     },
 
     readSinglePost: async (id) => {
       const endpoint = `${this.apiPost}/${id}?_author=true&_comments=true&_reactions=true`;
       const data = await this.fetchData(endpoint);
-      console.log("Single post:", data);
       return data;
     },
 
     readPostByUser: async (username) => {
       const endpoint = `${this.apiPost}/${username}`;
       const data = await this.fetchData(endpoint);
-      console.log("User posts:", data);
       return data;
     },
 
     create: async ({ title, body, tags, media }) => {
       const requestBody = { title, body, tags, media };
-      console.log("Creating post with data:", requestBody);
       const endpoint = `${this.apiPost}`;
       const data = await this.fetchData(endpoint, "POST", requestBody);
       window.location.href = `/post/?id=${data.data.id}`;
-      console.log(endpoint);
       return data;
     },
 
@@ -88,7 +82,6 @@ export default class SocialAPI {
       const requestBody = { title, body, tags, media };
       const endpoint = `${this.apiPost}/${id}`;
       const data = await this.fetchData(endpoint, "PUT", requestBody);
-      console.log("Post updated");
       return data;
     },
 
@@ -96,7 +89,6 @@ export default class SocialAPI {
       const endpoint = `${this.apiPost}/${id}/comment`;
       const requestBody = body;
       const data = await this.fetchData(endpoint, "POST", requestBody);
-      console.log("Published comment", data);
       return data;
     },
 

@@ -14,7 +14,6 @@ export async function carousel() {
     .sort((a, b) => b._count.comments - a._count.comments)
     .slice(0, 9);
 
-  console.log(carouselItems);
   // Create and append carousel items
   carouselContainer.innerHTML = "";
   carouselItems.forEach((item) => {
