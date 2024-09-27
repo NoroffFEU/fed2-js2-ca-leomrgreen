@@ -33,6 +33,10 @@ export async function onSearch(e) {
 
   // this ensures we don't get en error if trying to set a classname to a not existing element
   searchContainer ? (searchContainer.className = "search-container") : null;
+  const searchHeader = document.createElement("div");
+  searchHeader.className = "row";
+  searchHeader.textContent = `Users (${res.data.length})`;
+  searchContainer.appendChild(searchHeader);
   res.data.forEach((user) => {
     const row = document.createElement("div");
     row.className = "row";
@@ -45,6 +49,7 @@ export async function onSearch(e) {
         window.location.href = `/user/?id=${user.name}`;
       }
     });
+
     const username = document.createElement("div");
     username.textContent = `@${user.name}`;
     username.className = "search-res";
