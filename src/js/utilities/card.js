@@ -15,7 +15,7 @@ import {
   verifiedSVG,
 } from "./svg";
 
-authGuard();
+authGuard(); // check if user is logged in and has permission to view the content
 
 const api = new ProfileAPI();
 const socialApi = new SocialAPI();

@@ -7,7 +7,7 @@ nav {
   width: min(50rem, 100%);
   margin-inline: auto;
   background-color: var(--navClr);
-  border: 1.7px solid var(--border);
+  border: 2px solid var(--border);
   backdrop-filter: blur(0.5rem);
   -webkit-backdrop-filter: blur(0.5rem);
   border-radius: var(--radius);

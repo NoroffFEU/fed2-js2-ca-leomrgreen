@@ -64,6 +64,10 @@
   padding: 1rem;
 }
 
+#carousel-section h2 {
+  padding: 1rem;
+}
+
 .carousel-btns {
   display: flex;
   justify-content: flex-end;
