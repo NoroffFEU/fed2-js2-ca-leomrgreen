@@ -1,0 +1,74 @@
+#post-container {
+  width: min(30rem, 100%);
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding-bottom: 2rem;
+}
+
+.author-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--foreground);
+  cursor: pointer;
+}
+
+.author-container img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.author-container span {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.author-container span svg {
+  color: var(--primary);
+}
+
+h2 {
+  font-weight: 400;
+  color: var(--foreground);
+}
+
+#post-container img {
+  aspect-ratio: 1;
+}
+
+.tags {
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  color: var(--primary);
+}
+
+.tags li {
+  display: flex;
+  justify-content: start;
+  text-align: start;
+}
+
+.like-btn {
+  position: absolute;
+  bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  right: 4rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.like-btn svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}

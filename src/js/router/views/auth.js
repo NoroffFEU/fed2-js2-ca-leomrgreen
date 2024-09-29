@@ -1,1 +1,1 @@
-alert("Auth Index Page");
+console.log("auth index page");

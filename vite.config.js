@@ -4,6 +4,7 @@ import { defineConfig } from "vite";
 export default defineConfig({
   appType: "mpa",
   build: {
+    target: "esnext",
     rollupOptions: {
       input: {
         main: resolve(__dirname, "./index.html"),
@@ -11,6 +12,7 @@ export default defineConfig({
         auth: resolve(__dirname, "./auth/index.html"),
         register: resolve(__dirname, "./auth/register/index.html"),
         profile: resolve(__dirname, "./profile/index.html"),
+        user: resolve(__dirname, "./user/index.html"),
         post: resolve(__dirname, "./post/index.html"),
         editPost: resolve(__dirname, "./post/edit/index.html"),
         createPost: resolve(__dirname, "./post/create/index.html"),

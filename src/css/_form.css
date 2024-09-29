@@ -1,0 +1,84 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: min(50rem, 90%);
+  margin: auto;
+  gap: 1rem;
+}
+
+.form-group > input {
+  background-color: var(--card);
+  border: none;
+  height: 2.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  box-shadow: 0px 0px 10px var(--shadow);
+  padding: 1rem;
+}
+
+input::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-group > input:focus {
+  background-color: var(--card);
+  outline: none;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group > input:is(:-webkit-autofill, :autofill) {
+  background-color: var(--card);
+}
+
+.form-group > input:-webkit-autofill {
+  background-color: var(--card) !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--card) inset;
+  box-shadow: 0 0 0 1000px var(--card) inset;
+  -webkit-text-fill-color: var(--foreground) !important;
+  color: var(--foreground) !important;
+  outline: none !important;
+}
+
+.dark input:disabled {
+  background-color: hsla(0, 0%, 27%, 0.2);
+}
+
+input:disabled {
+  background-color: hsla(0, 0%, 44%, 0.171);
+}
+
+input:disabled {
+  cursor: not-allowed;
+}
+
+.modal-form {
+  background-color: var(--card);
+  width: min(30rem, 100%);
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.comment-flex {
+  display: grid;
+  grid-template-columns: 90% 1fr;
+  padding: 0 1rem 0 0;
+}
+
+.left-arrow {
+  position: absolute;
+  left: 2rem;
+  top: 7rem;
+}
+
+.left-arrow svg {
+  width: 4rem;
+  height: 4rem;
+  color: var(--primary);
+}
