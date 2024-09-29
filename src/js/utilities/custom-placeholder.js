@@ -2,6 +2,7 @@ import * as storage from "./storage";
 import ProfileAPI from "../api/profile";
 const api = new ProfileAPI();
 
+// purely for UI/UX, lets a user know that they cannot change / update their username
 export default async function updatePlaceholder() {
   const nameInput = document.querySelector(".usernameInput");
   const bioInput = document.getElementById("bio");

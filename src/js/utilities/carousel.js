@@ -56,6 +56,7 @@ export async function readPosts(page = 1, limit = 12) {
   }
 }
 
+// lets a user control which index we want to be on in our carousel using scrollTo()
 function initializeButtons(itemCount) {
   const carouselContainer = document.getElementById("carousel-container");
   const nextBtn = document.getElementById("nextBtn");
